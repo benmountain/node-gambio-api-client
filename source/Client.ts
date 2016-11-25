@@ -1,22 +1,16 @@
+import { ClientOptionsInterface } from './Interfaces';
+
 class Client {
-  /**
-   * Client version.
-   * @static
-   */
+  // Client version.
   public static VERSION: string = '0.1.0';
 
-  /**
-   * Client options.
-   * @private
-   * @type {ClientOptions}
-   */
-  private options: ClientOptions;
+  // Client options.
+  private options: ClientOptionsInterface;
 
   /**
    * Creates an instance of Client.
-   * @param {ClientOptions} options
    */
-  constructor(options: ClientOptions) {
+  constructor(options: ClientOptionsInterface) {
     // Check parameter.
     if (!options || typeof options !== 'object') {
       throw new Error('Missing or invalid client options');

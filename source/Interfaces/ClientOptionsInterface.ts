@@ -1,4 +1,4 @@
-interface ClientOptions {
+interface ClientOptionsInterface {
   // Shop URL.
   url: string;
 
@@ -8,3 +8,5 @@ interface ClientOptions {
   // Shop login password.
   password: string;
 }
+
+export { ClientOptionsInterface };

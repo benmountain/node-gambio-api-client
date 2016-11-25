@@ -1,20 +1,8 @@
 import test from 'tape';
-import semver from 'semver';
-import packageJson from './../../package.json';
 import loginValues from './../../tools/tests/values/login.json';
-import Client from './../..';
+import { RequestDispatcher } from './../../distribution/scripts/RequestDispatcher';
 
-test('Client::VERSION', t => {
-  const packageVersion = packageJson.version;
-  const returnedValue = Client.VERSION;
-
-  t.equal(typeof returnedValue, 'string', 'Is a string');
-  t.equal(packageVersion, returnedValue, 'Matches the package version');
-  t.ok(semver.valid(returnedValue), 'Is semver compatible');
-  t.end();
-});
-
-test('Client#constructor', t => {
+test('RequestDispatcher#constructor', t => {
   const baseParameters = Object.assign({}, loginValues);
 
   const scenarios = [
@@ -30,13 +18,13 @@ test('Client#constructor', t => {
 
   function helper(parameter, errorMessage) {
     const composedErrorMessage = `Throws error when ${errorMessage}`;
-    const functionTest = () => new Client(parameter);
+    const functionTest = () => new RequestDispatcher(parameter);
 
     t.throws(functionTest, Error, composedErrorMessage);
   }
 
   scenarios.forEach(scenario => helper(...scenario));
 
-  t.doesNotThrow(() => new Client(baseParameters), Error, 'Does not throw error when passing valid argument');
+  t.doesNotThrow(() => new RequestDispatcher(baseParameters), Error, 'Does not throw error when passing valid argument');
   t.end();
 });
