@@ -1,13 +1,8 @@
 {
   "declaration": true,
-  "experimentalAsyncFunctions": true,
   "experimentalDecorators": true,
   "target": "ES5",
   "module": "commonjs",
   "moduleResolution": "node",
-  "noImplicitAny": true,
-  "exclude": [
-    "node_modules/*",
-    "distribution/*"
-  ]
+  "noImplicitAny": true
 }
