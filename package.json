@@ -1,0 +1,40 @@
+{
+  "name": "node-api-client",
+  "version": "0.1.0",
+  "description": "Node API client for Gambio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gambio/node-api-client.git"
+  },
+  "keywords": [
+    "gambio",
+    "rest",
+    "api",
+    "client",
+    "node",
+    "js"
+  ],
+  "author": "rx2x",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gambio/node-api-client/issues"
+  },
+  "homepage": "https://github.com/gambio/node-api-client#readme",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.18.0",
+    "babel-register": "^6.18.0",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-require-tasks": "^1.0.5",
+    "gulp-typescript": "^3.1.3",
+    "gulp-watch": "^4.3.11",
+    "merge2": "^1.0.2",
+    "run-sequence": "^1.2.2",
+    "tslint": "^4.0.2",
+    "typescript": "^2.0.10"
+  }
+}
