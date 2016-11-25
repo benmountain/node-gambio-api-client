@@ -1,8 +1,5 @@
-# Indentation style.
+root = true
+
+[*]
 indent_style = space
-
-# Indentation size.
 indent_size = 2
-
-# Character set.
-charset = utf-8
