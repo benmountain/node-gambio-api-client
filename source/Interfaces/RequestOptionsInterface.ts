@@ -1,13 +1,22 @@
-import { RequestOptionsAuthInterface } from '.';
+import { RequestAuthOptionsInterface } from '.';
 
 interface RequestOptionsInterface {
-  // Request headers.
+  /**
+   * Request headers.
+   * @type {Object}
+   */
   headers: {};
 
-  // Request authentication.
-  auth: RequestOptionsAuthInterface
+  /**
+   * Request authentication.
+   * @type {RequestAuthOptionsInterface}
+   */
+  auth: RequestAuthOptionsInterface;
 
-  // Convert request body to JSON string?
+  /**
+   * Convert request body to JSON string?
+   * @type {Boolean}
+   */
   json: boolean;
 }
 
