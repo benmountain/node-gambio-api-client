@@ -1,4 +1,6 @@
 export { ClientOptionsInterface } from './ClientOptionsInterface';
 export { RequestOptionsInterface } from './RequestOptionsInterface';
-export { RequestOptionsAuthInterface } from './RequestOptionsAuthInterface';
+export { RequestAuthOptionsInterface } from './RequestAuthOptionsInterface';
 export { RequestDispatcherInterface } from './RequestDispatcherInterface';
+export { ResponseInterface } from './ResponseInterface';
+export { ResponseHandlerInterface } from './ResponseHandlerInterface';

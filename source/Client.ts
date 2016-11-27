@@ -1,10 +1,16 @@
 import { ClientOptionsInterface } from './Interfaces';
 
 class Client {
-  // Client version.
+  /**
+   * Client version.
+   * @type {String}
+   */
   public static VERSION: string = '0.1.0';
 
-  // Client options.
+  /**
+   * Client options.
+   * @type {ClientOptionsInterface}
+   */
   private options: ClientOptionsInterface;
 
   /**

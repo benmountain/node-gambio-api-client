@@ -1,11 +1,20 @@
 interface ClientOptionsInterface {
-  // Shop URL.
+  /**
+   * Shop URL.
+   * @type {String}
+   */
   url: string;
 
-  // Shop login user.
+  /**
+   * Shop login user.
+   * @type {String}
+   */
   user: string;
 
-  // Shop login password.
+  /**
+   * Shop login password.
+   * @type {String}
+   */
   password: string;
 }
 
