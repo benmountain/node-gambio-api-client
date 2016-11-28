@@ -1,7 +1,8 @@
 import 'core-js/shim';
-import { resolve } from 'path';
-import { createReadStream } from 'fs';
-import request from 'request';
+import * as path from 'path';
+import * as fs from 'fs';
+import * as http from 'http';
+import * as request from 'request';
 import {
   RequestAuthOptionsInterface,
   ClientOptionsInterface,
@@ -9,7 +10,7 @@ import {
   ResponseInterface,
 } from './Interfaces';
 import { HttpMethodsEnum } from './Enums';
-import { Configuration, ResponseHandler } from '.';
+import { Configuration } from '.';
 
 class RequestDispatcher implements RequestDispatcherInterface {
   /**
@@ -70,11 +71,11 @@ class RequestDispatcher implements RequestDispatcherInterface {
    * Returns the default request parameters.
    * @returns {Object} Default request parameters.
    */
-  private getDefaultRequestParameters(): { headers: {}, auth: RequestAuthOptionsInterface, url: string } {
+  private getDefaultRequestParameters(): { headers: {}, auth: RequestAuthOptionsInterface, json: true } {
     return {
       headers: this.headers,
       auth: this.auth,
-      url: this.url,
+      json: true
     };
   }
 
@@ -94,22 +95,37 @@ class RequestDispatcher implements RequestDispatcherInterface {
     const dataPropertyName: string = hasFormData ? 'formData' : (method === HttpMethodsEnum.GET ? 'qs' : 'body');
 
     // Set addtional request parameters.
-    const additionalParameters: {} = {
+    const additionalParameters: request.CoreOptions & request.RequiredUriUrl = {
       url: this.url + route,
       method: requestMethodName,
       [dataPropertyName]: data,
     };
 
     // Merge default request parameters with addtional ones.
-    const mergedParameters: {} = Object.assign(this.getDefaultRequestParameters(), additionalParameters);
+    const mergedParameters: request.CoreOptions & request.RequiredUriUrl = Object.assign(this.getDefaultRequestParameters(), additionalParameters);
 
     // Request promise handler.
     const promiseHandler = (resolve: Function, reject: Function) => {
-      // Create request response handler instance.
-      const responseHandler = new ResponseHandler(resolve, reject);
+      // Response handler.
+      const responseHandler = (error: Error, response: ResponseInterface) => {
+        // Reject promise with the error parameter, if defined.
+        if (error) {
+          reject(error);
+          return;
+        }
+
+        // Reject promise with the response body, if the status code is not ok.
+        if (response.statusCode < 200 || response.statusCode > 299) {
+          reject(response.body);
+          return;
+        }
+
+        // Resolve promise with the response body as object.
+        resolve(typeof response.body === 'string' ? JSON.parse(response.body) : response.body);
+      };
 
       // Send request.
-      request(mergedParameters, responseHandler.handle);
+      request(mergedParameters, responseHandler);
     };
 
     return new Promise(promiseHandler);
@@ -248,12 +264,12 @@ class RequestDispatcher implements RequestDispatcherInterface {
     }
 
     // Read file.
-    const file = createReadStream(resolve(filePath));
+    const file = fs.createReadStream(path.resolve(filePath));
 
     // Form data.
     const formData = {
-      filePostFieldName: file,
-      fileNamePostFieldName: fileName,
+      [filePostFieldName]: file,
+      [fileNamePostFieldName]: fileName,
     };
 
     // Perform request.

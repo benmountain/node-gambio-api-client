@@ -2,14 +2,12 @@ import test from 'tape';
 import path from 'path';
 import loginValues from './../../tools/tests/values/login.json';
 import { RequestDispatcher } from './../../distribution/scripts';
+import { noop } from './../../tools/tests/helpers/noop';
 
 const instance = new RequestDispatcher(loginValues);
 
 const route = '/route';
 const data = { entry: true };
-
-function noop() {
-}
 
 test('RequestDispatcher#constructor', t => {
   const baseParameters = Object.assign({}, loginValues);

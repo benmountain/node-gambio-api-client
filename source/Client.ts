@@ -1,4 +1,5 @@
 import { ClientOptionsInterface } from './Interfaces';
+import { RequestDispatcher, AddressEndpointConnector } from '.';
 
 class Client {
   /**
@@ -12,6 +13,18 @@ class Client {
    * @type {ClientOptionsInterface}
    */
   private options: ClientOptionsInterface;
+
+  /**
+   * Request dispatcher.
+   * @type {RequestDispatcher}
+   */
+  private requestDispatcher: RequestDispatcher;
+
+  /**
+   * Address endpoint connector.
+   * @type {AddressEndpointConnector}
+   */
+  public addresses: AddressEndpointConnector;
 
   /**
    * Creates an instance of Client.
@@ -37,8 +50,14 @@ class Client {
       throw new Error('Missing or invalid shop password');
     }
 
-    // Assign parameter as member.
+    // Assign parameter as property.
     this.options = options;
+
+    // Set request dispatcher as property.
+    this.requestDispatcher = new RequestDispatcher(this.options);
+
+    // Set endpoint connectors as properties.
+    this.addresses = new AddressEndpointConnector(this.requestDispatcher);
   }
 }
 

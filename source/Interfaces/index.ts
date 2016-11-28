@@ -3,4 +3,4 @@ export { RequestOptionsInterface } from './RequestOptionsInterface';
 export { RequestAuthOptionsInterface } from './RequestAuthOptionsInterface';
 export { RequestDispatcherInterface } from './RequestDispatcherInterface';
 export { ResponseInterface } from './ResponseInterface';
-export { ResponseHandlerInterface } from './ResponseHandlerInterface';
+export { GetOptionsInterface } from './GetOptionsInterface';
