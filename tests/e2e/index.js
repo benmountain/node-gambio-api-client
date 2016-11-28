@@ -1,5 +1,5 @@
 import CreateClientInstanceScenario from './CreateClientInstanceScenario';
-import CreateGetUpdateDeleteAddressScenario from './CreateGetUpdateDeleteAddressScenario';
+import CreateGetUpdateSearchDeleteAddressScenario from './CreateGetUpdateSearchDeleteAddressScenario';
 
 CreateClientInstanceScenario()
   .then(CreateGetUpdateDeleteAddressScenario);
