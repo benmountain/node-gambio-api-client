@@ -108,6 +108,9 @@ class RequestDispatcher implements RequestDispatcherInterface {
     const promiseHandler = (resolve: Function, reject: Function) => {
       // Response handler.
       const responseHandler = (error: Error, response: ResponseInterface) => {
+        // Parsed response.
+        let parsed : string | {} = null;
+
         // Reject promise with the error parameter, if defined.
         if (error) {
           reject(error);
@@ -120,8 +123,19 @@ class RequestDispatcher implements RequestDispatcherInterface {
           return;
         }
 
-        // Resolve promise with the response body as object.
-        resolve(typeof response.body === 'string' ? JSON.parse(response.body) : response.body);
+        // Parse the response body.
+        try {
+          if (typeof response.body === 'string') {
+            parsed = JSON.parse(response.body);
+          } else {
+            parsed = response.body;
+          }
+        } catch (parseError) {
+          resolve(response.body);
+        }
+
+        // Resolve promise.
+        resolve(parsed);
       };
 
       // Send request.
