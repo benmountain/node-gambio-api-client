@@ -2,22 +2,22 @@
 
 ## Table of contents
 
-  - *1* - [Introduction](#1-introduction)
-  - *2* - [Technologies](#2-technologies)
-    - *2.1* - [Source code](#21-source-code)
-    - *2.2* - [Tests](#22-tests)
-      - *2.2.1* - [Unit tests](#221-unit-tests)
-      - *2.2.2* - [E2E tests](#222-e2e-tests)
-  - *3* - [Dependencies](#3-dependencies)
-    - *3.1* - [Development dependencies](#31-development-dependencies)
-    - *3.2* - [Production dependencies](#32-production-dependencies)
-  - *4* - [Files](#4-files)
-    - *4.1* - [Directory structure](#41-directory-structure)
-    - *4.2* - [Project files details](#42-project-files-details)
-  - *5* - [Available commands](#5-available-commands)
-    - *5.1* - [Development](#51-development)
-    - *5.2* - [Testing](#52-testing)
-  - *6* - [Rules](#6-rules)
+  - *1* - [Introduction](#1---introduction)
+  - *2* - [Technologies](#2---technologies)
+    - *2.1* - [Source code](#21---source-code)
+    - *2.2* - [Tests](#22---tests)
+      - *2.2.1* - [Unit tests](#221---unit-tests)
+      - *2.2.2* - [E2E tests](#222---e2e-tests)
+  - *3* - [Dependencies](#3---dependencies)
+    - *3.1* - [Development dependencies](#31---development-dependencies)
+    - *3.2* - [Production dependencies](#32---production-dependencies)
+  - *4* - [Files](#4---files)
+    - *4.1* - [Directory structure](#41---directory-structure)
+    - *4.2* - [Project files details](#42---project-files-details)
+  - *5* - [Available commands](#5---available-commands)
+    - *5.1* - [Development](#51---development)
+    - *5.2* - [Testing](#52---testing)
+  - *6* - [Rules](#6---rules)
 
 
 ## *1* - Introduction
