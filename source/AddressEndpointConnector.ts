@@ -20,7 +20,7 @@ class AddressEndpointConnector extends AbstractEndpointConnector {
 
   /**
    * Creates a new address.
-   * @param {Object} data Address data. 
+   * @param {Object} data Address data.
    * @returns {Promise} Request promise.
    * @throws Will throw error on missing or invalid data parameter.
    */
@@ -40,7 +40,7 @@ class AddressEndpointConnector extends AbstractEndpointConnector {
    * @returns {Promise} Request promise.
    * @throws Will throw error on missing or invalid ID parameter.
    */
-  public delete(id: number) {
+  public delete(id: number): Promise<ResponseInterface> {
     // Check ID parameter.
     if (!id || typeof id !== 'number') {
       throw new Error('Missing or invalid address ID');
@@ -55,7 +55,7 @@ class AddressEndpointConnector extends AbstractEndpointConnector {
    * @param {GetOptionsInterface} [options] GET request modifier options.
    * @returns {Promise} Request promise.
    */
-  public get(options?: GetOptionsInterface) {
+  public get(options?: GetOptionsInterface): Promise<ResponseInterface> {
     return this.requestDispatcher.get(this.getRoute(), this.parseGetOptions(options));
   }
 
@@ -65,7 +65,7 @@ class AddressEndpointConnector extends AbstractEndpointConnector {
    * @returns {Promise} Request promise.
    * @throws Will throw error on missing or invalid ID parameter.
    */
-  public getById(id: number) {
+  public getById(id: number): Promise<ResponseInterface> {
     // Check ID parameter.
     if (!id || typeof id !== 'number') {
       throw new Error('Missing or invalid address ID');
@@ -81,7 +81,7 @@ class AddressEndpointConnector extends AbstractEndpointConnector {
    * @returns {Promise} Request promise.
    * @throws Will throw error on missing or invalid search term parameter.
    */
-  public search(term: string) {
+  public search(term: string): Promise<ResponseInterface> {
     // Check search term parameter.
     if (!term || typeof term !== 'string') {
       throw new Error('Missing or invalid search term');
@@ -99,7 +99,7 @@ class AddressEndpointConnector extends AbstractEndpointConnector {
    * @throws Will throw error on missing or invalid ID parameter.
    * @throws Will throw error on missing or invalid data parameter.
    */
-  public update(id: number, data: {}) {
+  public update(id: number, data: {}): Promise<ResponseInterface> {
     // Check ID parameter.
     if (!id || typeof id !== 'number') {
       throw new Error('Missing or invalid address ID');
