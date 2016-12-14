@@ -1,0 +1,27 @@
+{
+  "gender": "m",
+  "firstname": "John",
+  "lastname": "Doe",
+  "dateOfBirth": "1985-02-13",
+  "vatNumber": "0923429837942",
+  "telephone": "2343948798345",
+  "fax": "2093049283",
+  "email": "customer@email.de",
+  "password": "0123456789",
+  "isGuest": false,
+  "address": {
+    "company": "Test Company",
+    "street": "Test Street",
+    "houseNumber": "123",
+    "additionalAddressInfo": "1. Etage",
+    "suburb": "Test Suburb",
+    "postcode": "23983",
+    "city": "Test City",
+    "countryId": 81,
+    "zoneId": 84,
+    "b2bStatus": true
+  },
+  "addonValues": {
+    "test_key": "test_value"
+  }
+}
