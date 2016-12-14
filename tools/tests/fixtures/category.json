@@ -1,0 +1,78 @@
+{
+  "parentId": 0,
+  "isActive": true,
+  "sortOrder": 0,
+  "name": {
+    "en": "test category",
+    "de": "Testkategorie"
+  },
+  "headingTitle": {
+    "en": "test category",
+    "de": "Testkategorie"
+  },
+  "description": {
+    "en": "testcategorydescription",
+    "de": "TestkategorieBeschreibung"
+  },
+  "metaTitle": {
+    "en": "",
+    "de": ""
+  },
+  "metaDescription": {
+    "en": "",
+    "de": ""
+  },
+  "metaKeywords": {
+    "en": "",
+    "de": ""
+  },
+  "urlKeywords": {
+    "en": "test-category",
+    "de": "Testkategorie"
+  },
+  "icon": "item_ltr.gif",
+  "image": "",
+  "imageAltText": {
+    "en": "",
+    "de": ""
+  },
+  "settings": {
+    "categoryListingTemplate": "categorie_listing.html",
+    "productListingTemplate": "product_listing_v1.html",
+    "sortColumn": "p.products_price",
+    "sortDirection": "ASC",
+    "onSitemap": true,
+    "sitemapPriority": "0.5",
+    "sitemapChangeFrequency": "daily",
+    "showAttributes": false,
+    "showGraduatedPrice": false,
+    "showQuantity": true,
+    "showQuantityInfo": false,
+    "showSubCategories": true,
+    "showSubCategoryImages": true,
+    "showSubCategoryNames": true,
+    "showSubCategoryProducts": false,
+    "isViewModeTiled": false,
+    "showCategoryFilter": false,
+    "filterSelectionMode": 0,
+    "filterValueDeactivation": 0,
+    "groupPermissions": [
+      {
+        "id": "0",
+        "isPermitted": false
+      },
+      {
+        "id": "1",
+        "isPermitted": false
+      },
+      {
+        "id": "2",
+        "isPermitted": false
+      },
+      {
+        "id": "3",
+        "isPermitted": false
+      }
+    ]
+  }
+}
