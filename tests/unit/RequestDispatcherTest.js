@@ -1,30 +1,30 @@
 import test from 'tape';
-import path from 'path';
-import loginValues from './../../tools/tests/values/login.json';
 import { RequestDispatcher } from './../../distribution/scripts';
-import { noop } from './../../tools/tests/helpers/noop';
+import { noop } from './../../tools/tests/helpers';
+import { loginData, variables } from './../../tools/tests/values';
+import { file } from './../../tools/tests/fixtures';
 
-const instance = new RequestDispatcher(loginValues);
+const instance = new RequestDispatcher(loginData);
 
 const route = '/route';
 const data = { entry: true };
 
 test('RequestDispatcher#constructor', t => {
-  const baseParameters = Object.assign({}, loginValues);
+  const baseParameters = Object.assign({}, loginData);
 
   const scenarios = [
     [{}, 'passing an empty object'],
     [null, 'passing null'],
-    [Object.assign({}, baseParameters, { url: '' }), 'passing an empty URL'],
-    [Object.assign({}, baseParameters, { url: 1 }), 'passing an invalid URL'],
-    [Object.assign({}, baseParameters, { user: '' }), 'passing an empty user'],
-    [Object.assign({}, baseParameters, { user: 1 }), 'passing an invalid user'],
-    [Object.assign({}, baseParameters, { password: '' }), 'passing an empty password'],
-    [Object.assign({}, baseParameters, { password: 1 }), 'passing an invalid password'],
+    [Object.assign({}, baseParameters, { url: '' }), 'empty URL'],
+    [Object.assign({}, baseParameters, { url: 1 }), 'invalid URL'],
+    [Object.assign({}, baseParameters, { user: '' }), 'empty user'],
+    [Object.assign({}, baseParameters, { user: 1 }), 'invalid user'],
+    [Object.assign({}, baseParameters, { password: '' }), 'empty password'],
+    [Object.assign({}, baseParameters, { password: 1 }), 'invalid password'],
   ];
 
   function helper(parameter, errorMessage) {
-    const composedErrorMessage = `Throws error when ${errorMessage}`;
+    const composedErrorMessage = `Throws error on ${errorMessage}`;
     const functionTest = () => new RequestDispatcher(parameter);
 
     t.throws(functionTest, Error, composedErrorMessage);
@@ -32,7 +32,7 @@ test('RequestDispatcher#constructor', t => {
 
   scenarios.forEach(scenario => helper(...scenario));
 
-  t.doesNotThrow(() => new RequestDispatcher(baseParameters), Error, 'Does not throw error when passing valid argument');
+  t.doesNotThrow(() => new RequestDispatcher(baseParameters), Error, 'Does not throw error on valid argument');
   t.end();
 });
 
@@ -79,7 +79,7 @@ test('RequestDispatcher#delete', t => {
 });
 
 test('RequestDispatcher#uploadFile', t => {
-  const filePath = path.join(__dirname, '..', '..', 'tools', 'tests', 'fixtures', 'file.txt');
+  const filePath = file;
   const fileName = 'notes.txt';
   const fieldNameForFile = 'filedata';
   const fieldNameForFileName = 'name';
