@@ -6,6 +6,7 @@ import {
   CountryEndpointConnector,
   CustomerEndpointConnector,
   EmailEndpointConnector,
+  OrderEndpointConnector,
 } from '.';
 
 class Client {
@@ -58,6 +59,12 @@ class Client {
   public emails: EmailEndpointConnector;
 
   /**
+   * Order endpoint connector.
+   * @type {OrderEndpointConnector}
+   */
+  public orders: OrderEndpointConnector;
+
+  /**
    * Creates an instance of Client.
    */
   constructor(options: ClientOptionsInterface) {
@@ -93,6 +100,7 @@ class Client {
     this.countries = new CountryEndpointConnector(this.requestDispatcher);
     this.customers = new CustomerEndpointConnector(this.requestDispatcher);
     this.emails = new EmailEndpointConnector(this.requestDispatcher);
+    this.orders = new OrderEndpointConnector(this.requestDispatcher);
   }
 }
 

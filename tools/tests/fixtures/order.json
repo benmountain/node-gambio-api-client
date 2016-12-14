@@ -1,0 +1,147 @@
+{
+  "statusId": 1,
+  "purchaseDate": "2015-11-06 12:22:39",
+  "currencyCode": "EUR",
+  "languageCode": "DE",
+  "totalWeight": 0.123,
+  "comment": "",
+  "paymentType": {
+    "title": "cod",
+    "module": "cod"
+  },
+  "shippingType": {
+    "title": "Pauschale Versandkosten (Standar",
+    "module": "flat_flat"
+  },
+  "customer": {
+    "id": 1,
+    "number": "",
+    "email": "admin@shop.de",
+    "phone": "0421 - 22 34 678",
+    "vatId": "",
+    "status": {
+      "id": 0,
+      "name": "Admin",
+      "image": "admin_status.gif",
+      "discount": 0,
+      "isGuest": false
+    }
+  },
+  "addresses": {
+    "customer": {
+      "gender": "m",
+      "firstname": "John",
+      "lastname": "Doe",
+      "company": "JD Company",
+      "street": "Test Street",
+      "houseNumber": "123",
+      "additionalAddressInfo": "1. Etage",
+      "suburb": "",
+      "postcode": "28219",
+      "city": "Bremen",
+      "countryId": 81,
+      "zoneId": 0,
+      "b2bStatus": false
+    },
+    "billing": {
+      "gender": "m",
+      "firstname": "John",
+      "lastname": "Doe",
+      "company": "JD Company",
+      "street": "Test Street",
+      "houseNumber": "123",
+      "additionalAddressInfo": "1. Etage",
+      "suburb": "",
+      "postcode": "28219",
+      "city": "Bremen",
+      "countryId": 81,
+      "zoneId": 0,
+      "b2bStatus": false
+    },
+    "delivery": {
+      "gender": "m",
+      "firstname": "John",
+      "lastname": "Doe",
+      "company": "JD Company",
+      "street": "Test Street",
+      "houseNumber": "123",
+      "additionalAddressInfo": "1. Etage",
+      "suburb": "",
+      "postcode": "28219",
+      "city": "Bremen",
+      "countryId": 81,
+      "zoneId": 0,
+      "b2bStatus": false
+    }
+  },
+  "items": [
+    {
+      "id": 1,
+      "model": "12345-s-black",
+      "name": "Ein Artikel",
+      "quantity": 1,
+      "price": 11,
+      "finalPrice": 11,
+      "tax": 19,
+      "isTaxAllowed": true,
+      "discount": 0,
+      "shippingTimeInformation": "",
+      "checkoutInformation": "Checkout information goes here ...",
+      "quantityUnitName": "Liter",
+      "attributes": [
+        {
+          "id": 1,
+          "name": "Farbe",
+          "value": "rot",
+          "price": 0,
+          "priceType": "+",
+          "optionId": 1,
+          "optionValueId": 1,
+          "combisId": null
+        }
+      ],
+      "downloadInformation": [
+        {
+          "filename": "Dokument.pdf",
+          "maxDaysAllowed": 5,
+          "countAvailable": 14
+        }
+      ],
+      "addonValues": {
+        "productId": "2",
+        "quantityUnitId": "1"
+      }
+    }
+  ],
+  "totals": [
+    {
+      "id": 1,
+      "title": "Zwischensumme:",
+      "value": 50,
+      "valueText": "50,00 EUR",
+      "class": "ot_subtotal",
+      "sortOrder": 10
+    }
+  ],
+  "statusHistory": [
+    {
+      "id": 1,
+      "statusId": 1,
+      "dateAdded": "2015-11-06 12:22:39",
+      "comment": "",
+      "customerNotified": true
+    }
+  ],
+  "addonValues": {
+    "customerIp": "",
+    "downloadAbandonmentStatus": "0",
+    "serviceAbandonmentStatus": "0",
+    "ccType": "",
+    "ccOwner": "",
+    "ccNumber": "",
+    "ccExpires": "",
+    "ccStart": "",
+    "ccIssue": "",
+    "ccCvv": ""
+  }
+}
