@@ -75,31 +75,31 @@ Everyone is welcome to send pull requests.
 
 ### *4.1* - Directory structure
 
-- **distribution** - Output code 
-- **source** - The source code
-- **tests** - All test files
-  - **e2e** - End-to-end test files
-  - **unit** - Unit-test files
-- **tools** - Development tools
-  - **gulp** - All gulp tasks
-  - **tests** - Helpers for tests
-    - **fixtures** - Fixtures for unit-tests
-    - **helpers** - Helper functions
-    - **values** - Value helpers
+- `distribution` - Output code 
+- `source` - The source code
+- `tests` - All test files
+  - `e2e` - End-to-end test files
+  - `unit` - Unit-test files
+- `tools` - Development tools
+  - `gulp` - All gulp tasks
+  - `tests` - Helpers for tests
+    - `fixtures` - Fixtures for unit-tests
+    - `helpers` - Helper functions
+    - `values` - Value helpers
 
 ### *4.2* - Project files details
 
-- **.babelrc** - Babel compiler settings
-- **.editorconfig** - Universal editor configuration
-- **.gitignore** - List of ignored files and directories
-- **CHANGELOG.md** - Changelog
-- **CONTRIBUTING.md** - This file
-- **gulpfile.babel.js** - Gulp tasks definition file
-- **index.js** - Main entry script
-- **package.json** - Module manifest
-- **README.md** - ReadMe
-- **tsconfig.json** - TypeScript compiler settings
-- **tslint.json** - TSLint settings
+- `.babelrc` - Babel compiler settings
+- `.editorconfig` - Universal editor configuration
+- `.gitignore` - List of ignored files and directories
+- `CHANGELOG.md` - Changelog
+- `CONTRIBUTING.md` - This file
+- `gulpfile.babel.js` - Gulp tasks definition file
+- `index.js` - Main entry script
+- `package.json` - Module manifest
+- `README.md` - ReadMe
+- `tsconfig.json` - TypeScript compiler settings
+- `tslint.json` - TSLint settings
 
 ## *5* - Available commands
 
