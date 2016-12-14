@@ -1,5 +1,10 @@
 import { ClientOptionsInterface } from './Interfaces';
-import { RequestDispatcher, AddressEndpointConnector, CategoryEndpointConnector } from '.';
+import {
+  RequestDispatcher,
+  AddressEndpointConnector,
+  CategoryEndpointConnector,
+  CountryEndpointConnector,
+} from '.';
 
 class Client {
   /**
@@ -31,6 +36,12 @@ class Client {
    * @type {AddressEndpointConnector}
    */
   public categories: CategoryEndpointConnector;
+
+  /**
+   * Country endpoint connector.
+   * @type {CountryEndpointConnector}
+   */
+  public countries: CountryEndpointConnector;
 
   /**
    * Creates an instance of Client.
@@ -65,6 +76,7 @@ class Client {
     // Set endpoint connectors as properties.
     this.addresses = new AddressEndpointConnector(this.requestDispatcher);
     this.categories = new CategoryEndpointConnector(this.requestDispatcher);
+    this.countries = new CountryEndpointConnector(this.requestDispatcher);
   }
 }
 
