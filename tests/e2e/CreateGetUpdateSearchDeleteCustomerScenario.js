@@ -1,7 +1,7 @@
-import customerFixture from './../../tools/tests/fixtures/customer.json';
+import { customer } from './../../tools/tests/fixtures';
 
 const invoker = client => client.customers
-  .create(customerFixture)
+  .create(customer)
   .then(customer => customer.id)
   .then(id => client.customers.getById(id))
   .then(customer => client.customers.update(customer.id, { firstname: 'Bob' }))

@@ -1,7 +1,7 @@
-import addressFixture from './../../tools/tests/fixtures/address.json';
+import { address } from './../../tools/tests/fixtures';
 
 const invoker = client => client.addresses
-  .create(addressFixture)
+  .create(address)
   .then(address => address.id)
   .then(id => client.addresses.getById(id))
   .then(address => client.addresses.update(address.id, { firstname: 'Bob' }))

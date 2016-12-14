@@ -1,11 +1,11 @@
-import categoryFixture from './../../tools/tests/fixtures/category.json';
+import { category, image } from './../../tools/tests/fixtures';
 
-const imagePath = `${__dirname}/../../tools/tests/fixtures/image.png`;
+const imagePath = image;
 const imageName = 'hey.png';
 const imageNameRenamed = 'hey-renamed.png'
 
 const invoker = client => client.categories
-  .create(categoryFixture)
+  .create(category)
   .then(address => address.id)
   .then(id => client.categories.getById(id))
   .then(address => client.categories.update(address.id, { icon: 'image-blubb.png' }))

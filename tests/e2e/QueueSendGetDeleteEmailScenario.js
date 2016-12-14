@@ -1,14 +1,14 @@
-import emailFixture from './../../tools/tests/fixtures/email.json';
+import { email, image } from './../../tools/tests/fixtures';
 
-const attachmentPath = `${__dirname}/../../tools/tests/fixtures/image.png`;
+const attachmentPath = image;
 const attachmentName = 'hey.png';
 
 const invoker = client => client.emails
-  .queue(emailFixture)
+  .queue(email)
   .then(email => client.emails.getById(email.id))
   .then(email => client.emails.sendById(email.id))
   .then(email => client.emails.delete(email.id))
-  .then(() => client.emails.send(emailFixture))
+  .then(() => client.emails.send(email))
   .then(() => client.emails.uploadAttachment(attachmentPath, attachmentName))
   .then(() => client);
 

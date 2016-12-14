@@ -1,8 +1,8 @@
-import loginValues from './../../tools/tests/values/login.json';
+import { loginData } from './../../tools/tests/values';
 import Client from './../..';
 
 const scenario = resolve => {
-  const client = new Client(loginValues);
+  const client = new Client(loginData);
   resolve(client);
 };
 
