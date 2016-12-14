@@ -35,7 +35,7 @@ class AddressEndpointConnector extends AbstractEndpointConnector {
   }
 
   /**
-   * Delete an address by its ID.
+   * Deletes an address by its ID.
    * @param {Number} id Address ID.
    * @returns {Promise} Request promise.
    * @throws Will throw error on missing or invalid ID parameter.
