@@ -6,3 +6,4 @@ export { AddressEndpointConnector } from './AddressEndpointConnector';
 export { CategoryEndpointConnector } from './CategoryEndpointConnector';
 export { CountryEndpointConnector } from './CountryEndpointConnector';
 export { CustomerEndpointConnector } from './CustomerEndpointConnector';
+export { EmailEndpointConnector } from './EmailEndpointConnector';
