@@ -1,7 +1,7 @@
 import { noop } from '.';
 import { variables } from './../values';
 import { login } from './../fixtures';
-import { RequestDispatcher } from './../../../distribution/scripts';
+import { RequestDispatcher } from './../../distribution/scripts';
 
 /**
  * Performs a test to the constructor of an EndpointConnector instance.
@@ -12,7 +12,7 @@ function testEndpointConnectorConstructor(testSpec, ClassToInstantiate) {
   const requestDispatcher = new RequestDispatcher(login);
 
   testSpec.throws(() => new ClassToInstantiate(), Error, 'Throws error on missing parameter');
-  testSpec.throws(() => new ClassToInstantiate(variables.numbers.positive), Error, 'Throws error on invalid parameter');
+  testSpec.throws(() => new ClassToInstantiate(variables.examples.number), Error, 'Throws error on invalid parameter');
   testSpec.doesNotThrow(() => new ClassToInstantiate(requestDispatcher), Error, 'Does not throw error on valid parameter');
   testSpec.end();
 }
@@ -23,7 +23,7 @@ function testEndpointConnectorConstructor(testSpec, ClassToInstantiate) {
  * @param {Object} instance Class instance.
  */
 function testEndpointConnectorCreateMethod(testSpec, instance) {
-  testEndpointConnectorCustomMethodWithRequiredParameter(testSpec, instance, 'create', variables.objects.empty);
+  testEndpointConnectorCustomMethodWithRequiredParameter(testSpec, instance, 'create', variables.empty.object);
 }
 
 /**
@@ -32,7 +32,7 @@ function testEndpointConnectorCreateMethod(testSpec, instance) {
  * @param {Object} instance Class instance.
  */
 function testEndpointConnectorDeleteMethod(testSpec, instance) {
-  testEndpointConnectorCustomMethodWithRequiredParameter(testSpec, instance, 'delete', variables.numbers.positive);
+  testEndpointConnectorCustomMethodWithRequiredParameter(testSpec, instance, 'delete', variables.examples.number);
 }
 
 /**
@@ -50,7 +50,7 @@ function testEndpointConnectorGetMethod(testSpec, instance) {
  * @param {Object} instance Class instance.
  */
 function testEndpointConnectorGetByIdMethod(testSpec, instance) {
-  testEndpointConnectorCustomMethodWithRequiredParameter(testSpec, instance, 'getById', variables.numbers.positive);
+  testEndpointConnectorCustomMethodWithRequiredParameter(testSpec, instance, 'getById', variables.examples.number);
 }
 
 /**
@@ -59,7 +59,7 @@ function testEndpointConnectorGetByIdMethod(testSpec, instance) {
  * @param {Object} instance Class instance.
  */
 function testEndpointConnectorSearchMethod(testSpec, instance) {
-  testEndpointConnectorCustomMethodWithRequiredParameter(testSpec, instance, 'search', variables.strings.minimal);
+  testEndpointConnectorCustomMethodWithRequiredParameter(testSpec, instance, 'search', variables.examples.string);
 }
 
 /**
@@ -68,7 +68,7 @@ function testEndpointConnectorSearchMethod(testSpec, instance) {
  * @param {Object} instance Class instance.
  */
 function testEndpointConnectorUpdateMethod(testSpec, instance) {
-  testEndpointConnectorCustomMethodWithMultipleParameters(testSpec, instance, 'update', [variables.numbers.positive, variables.objects.empty]);
+  testEndpointConnectorCustomMethodWithMultipleParameters(testSpec, instance, 'update', [variables.examples.number, variables.empty.object]);
 }
 
 /**
@@ -100,7 +100,7 @@ function testEndpointConnectorCustomMethodWithNoParameters(testSpec, instance, m
 }
 
 /**
- * Performs a test to a custom method of an EndpointConnector instance which required multiple parameters.
+ * Performs a test to a custom method of an EndpointConnector instance which requires multiple parameters.
  * @param {Object} testSpec Tape spec parameter.
  * @param {Object} instance Class instance.
  * @param {String} methodName Class method name.
@@ -115,8 +115,40 @@ function testEndpointConnectorCustomMethodWithMultipleParameters(testSpec, insta
     testSpec.throws(() => instance[methodName](...invalidParameters).catch(noop), Error, `Throws error on invalid parameter number ${iteration}`);
   }
 
-  testSpec.doesNotThrow(() => instance[methodName](...parameters).catch(noop), Error, 'Does not throw error on valid parameters')
+  testSpec.doesNotThrow(() => instance[methodName](...parameters).catch(noop), Error, 'Does not throw error on valid parameters');
   testSpec.ok(instance[methodName](...parameters).catch(noop) instanceof Promise, 'Returns a promise');
+  testSpec.end();
+}
+
+/**
+ * Performs a test to a custom method of an RequestDispatcher instance which requires 2 parameters.
+ * @param {Object} testSpec Tape spec parameter.
+ * @param {Object} instance Class instance.
+ * @param {String} methodName Class method name.
+ */
+function testRequestDispatcherCustomMethodWithRequiredDataParameter(testSpec, instance, methodName) {
+  testSpec.throws(() => instance[methodName]().catch(noop), Error, `Throws error on missing parameters`);
+  testSpec.throws(() => instance[methodName](Function).catch(noop), Error, 'Throws error on invalid parameter');
+  testSpec.throws(() => instance[methodName](variables.examples.string).catch(noop), Error, 'Throws error on missing parameter number 1');
+  testSpec.throws(() => instance[methodName](variables.examples.string, Function).catch(noop), Error, 'Throws error on invalid parameter number 1');
+  testSpec.doesNotThrow(() => instance[methodName](variables.examples.string, variables.examples.object).catch(noop), Error, 'Does not throw error on valid parameters')
+  testSpec.ok(instance[methodName](variables.examples.string, variables.examples.object).catch(noop) instanceof Promise, 'Returns a promise');
+  testSpec.end();
+}
+
+/**
+ * Performs a test to a custom method of an RequestDispatcher instance which does not requires the second parameter.
+ * @param {Object} testSpec Tape spec parameter.
+ * @param {Object} instance Class instance.
+ * @param {String} methodName Class method name.
+ */
+function testRequestDispatcherCustomMethodWithOptionalDataParameter(testSpec, instance, methodName) {
+  testSpec.throws(() => instance[methodName]().catch(noop), Error, `Throws error on missing parameters`);
+  testSpec.throws(() => instance[methodName](Function).catch(noop), Error, 'Throws error on invalid parameter');
+  testSpec.throws(() => instance[methodName](variables.examples.string, Function).catch(noop), Error, 'Throws error on invalid parameter number 1');
+  testSpec.doesNotThrow(() => instance[methodName](variables.examples.string).catch(noop), Error, 'Does not throw error on missing parameter number 1');
+  testSpec.doesNotThrow(() => instance[methodName](variables.examples.string, variables.examples.object).catch(noop), Error, 'Does not throw error on valid parameters')
+  testSpec.ok(instance[methodName](variables.examples.string).catch(noop) instanceof Promise, 'Returns a promise');
   testSpec.end();
 }
 
@@ -131,4 +163,6 @@ export {
   testEndpointConnectorCustomMethodWithRequiredParameter,
   testEndpointConnectorCustomMethodWithNoParameters,
   testEndpointConnectorCustomMethodWithMultipleParameters,
+  testRequestDispatcherCustomMethodWithRequiredDataParameter,
+  testRequestDispatcherCustomMethodWithOptionalDataParameter,
 };
