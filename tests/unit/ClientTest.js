@@ -1,11 +1,11 @@
 import test from 'tape';
 import semver from 'semver';
-import packageJson from './../../package.json';
-import loginValues from './../../tools/tests/values/login.json';
+import { files, variables } from './../../tools/values';
+import { login } from './../../tools/fixtures';
 import Client from './../..';
 
 test('Client::VERSION', t => {
-  const packageVersion = packageJson.version;
+  const packageVersion = files.packageData.version;
   const returnedValue = Client.VERSION;
 
   t.equal(typeof returnedValue, 'string', 'Is a string');
@@ -15,28 +15,15 @@ test('Client::VERSION', t => {
 });
 
 test('Client#constructor', t => {
-  const baseParameters = Object.assign({}, loginValues);
-
-  const scenarios = [
-    [{}, 'passing an empty object'],
-    [null, 'passing null'],
-    [Object.assign({}, baseParameters, { url: '' }), 'passing an empty URL'],
-    [Object.assign({}, baseParameters, { url: 1 }), 'passing an invalid URL'],
-    [Object.assign({}, baseParameters, { user: '' }), 'passing an empty user'],
-    [Object.assign({}, baseParameters, { user: 1 }), 'passing an invalid user'],
-    [Object.assign({}, baseParameters, { password: '' }), 'passing an empty password'],
-    [Object.assign({}, baseParameters, { password: 1 }), 'passing an invalid password'],
-  ];
-
-  function helper(parameter, errorMessage) {
-    const composedErrorMessage = `Throws error when ${errorMessage}`;
-    const functionTest = () => new Client(parameter);
-
-    t.throws(functionTest, Error, composedErrorMessage);
-  }
-
-  scenarios.forEach(scenario => helper(...scenario));
-
-  t.doesNotThrow(() => new Client(baseParameters), Error, 'Does not throw error when passing valid argument');
+  t.throws(() => new Client(), Error, 'Throws error on missing parameter');
+  t.throws(() => new Client(variables.empty.object), Error, 'Throws error on empty object parameter');
+  t.throws(() => new Client(variables.examples.number), Error, 'Throws error on invalid parameter');
+  t.throws(() => new Client(Object.assign({}, login, { url: variables.empty.string })), Error, 'Throws error on empty URL');
+  t.throws(() => new Client(Object.assign({}, login, { url: variables.examples.number })), Error, 'Throws error on invalid URL');
+  t.throws(() => new Client(Object.assign({}, login, { user: variables.empty.string })), Error, 'Throws error on empty user');
+  t.throws(() => new Client(Object.assign({}, login, { user: variables.examples.number })), Error, 'Throws error on invalid user');
+  t.throws(() => new Client(Object.assign({}, login, { password: variables.empty.string })), Error, 'Throws error on empty password');
+  t.throws(() => new Client(Object.assign({}, login, { password: variables.examples.number })), Error, 'Throws error on invalid password');
+  t.doesNotThrow(() => new Client(login), Error, 'Does not throw error on valid parameter');
   t.end();
 });

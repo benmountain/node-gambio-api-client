@@ -1,9 +1,9 @@
 import test from 'tape';
 import { AddressEndpointConnector, RequestDispatcher } from './../../distribution/scripts';
-import { reusableTesters } from './../../tools/tests/helpers';
-import { loginData } from './../../tools/tests/values';
+import { reusableTesters } from './../../tools/helpers';
+import { login } from './../../tools/fixtures';
 
-const instance = new AddressEndpointConnector(new RequestDispatcher(loginData));
+const instance = new AddressEndpointConnector(new RequestDispatcher(login));
 
 test('AddressEndpointConnector#constructor', t => reusableTesters.testEndpointConnectorConstructor(t, AddressEndpointConnector));
 test('AddressEndpointConnector#create', t => reusableTesters.testEndpointConnectorCreateMethod(t, instance));

@@ -1,98 +1,40 @@
 import test from 'tape';
 import { RequestDispatcher } from './../../distribution/scripts';
-import { noop } from './../../tools/tests/helpers';
-import { loginData, variables } from './../../tools/tests/values';
-import { file } from './../../tools/tests/fixtures';
+import { noop, reusableTesters } from './../../tools/helpers';
+import { login, file } from './../../tools/fixtures';
+import { variables } from './../../tools/values';
 
-const instance = new RequestDispatcher(loginData);
-
-const route = '/route';
-const data = { entry: true };
+const instance = new RequestDispatcher(login);
 
 test('RequestDispatcher#constructor', t => {
-  const baseParameters = Object.assign({}, loginData);
-
-  const scenarios = [
-    [{}, 'passing an empty object'],
-    [null, 'passing null'],
-    [Object.assign({}, baseParameters, { url: '' }), 'empty URL'],
-    [Object.assign({}, baseParameters, { url: 1 }), 'invalid URL'],
-    [Object.assign({}, baseParameters, { user: '' }), 'empty user'],
-    [Object.assign({}, baseParameters, { user: 1 }), 'invalid user'],
-    [Object.assign({}, baseParameters, { password: '' }), 'empty password'],
-    [Object.assign({}, baseParameters, { password: 1 }), 'invalid password'],
-  ];
-
-  function helper(parameter, errorMessage) {
-    const composedErrorMessage = `Throws error on ${errorMessage}`;
-    const functionTest = () => new RequestDispatcher(parameter);
-
-    t.throws(functionTest, Error, composedErrorMessage);
-  }
-
-  scenarios.forEach(scenario => helper(...scenario));
-
-  t.doesNotThrow(() => new RequestDispatcher(baseParameters), Error, 'Does not throw error on valid argument');
+  t.throws(() => new RequestDispatcher(), Error, 'Throws error on missing parameter');
+  t.throws(() => new RequestDispatcher(variables.empty.object), Error, 'Throws error on empty object parameter');
+  t.throws(() => new RequestDispatcher(variables.examples.number), Error, 'Throws error on invalid parameter');
+  t.throws(() => new RequestDispatcher(Object.assign({}, login, { url: variables.empty.string })), Error, 'Throws error on empty URL');
+  t.throws(() => new RequestDispatcher(Object.assign({}, login, { url: variables.examples.number })), Error, 'Throws error on invalid URL');
+  t.throws(() => new RequestDispatcher(Object.assign({}, login, { user: variables.empty.string })), Error, 'Throws error on empty user');
+  t.throws(() => new RequestDispatcher(Object.assign({}, login, { user: variables.examples.number })), Error, 'Throws error on invalid user');
+  t.throws(() => new RequestDispatcher(Object.assign({}, login, { password: variables.empty.string })), Error, 'Throws error on empty password');
+  t.throws(() => new RequestDispatcher(Object.assign({}, login, { password: variables.examples.number })), Error, 'Throws error on invalid password');
+  t.doesNotThrow(() => new RequestDispatcher(login), Error, 'Does not throw error on valid parameter');
   t.end();
 });
 
-test('RequestDispatcher#get', t => {
-  t.throws(() => instance.get().catch(noop), Error, 'Throws error when passing no arguments');
-  t.throws(() => instance.get(1).catch(noop), Error, 'Throws error when passing invalid route');
-  t.throws(() => instance.get('').catch(noop), Error, 'Throws error when passing empty route');
-  t.throws(() => instance.get(route, 2).catch(noop), Error, 'Throws error when passing invalid data');
-  t.doesNotThrow(() => instance.get(route).catch(noop), Error, 'Does not throw error when no data is passed');
-  t.ok(instance.get(route, data).catch(noop) instanceof Promise, 'Returns a Promise');
-  t.end();
-});
-
-test('RequestDispatcher#post', t => {
-  t.throws(() => instance.post().catch(noop), Error, 'Throws error when passing no arguments');
-  t.throws(() => instance.post(1).catch(noop), Error, 'Throws error when passing invalid route');
-  t.throws(() => instance.post('').catch(noop), Error, 'Throws error when passing empty route');
-  t.throws(() => instance.post(route).catch(noop), Error, 'Throws error on missing data');
-  t.throws(() => instance.post(route, 2).catch(noop), Error, 'Throws error when passing invalid data');
-  t.doesNotThrow(() => instance.post(route, data).catch(noop), Error, 'Does not throw error when passing valid data');
-  t.ok(instance.post(route, data).catch(noop) instanceof Promise, 'Returns a Promise');
-  t.end();
-});
-
-test('RequestDispatcher#put', t => {
-  t.throws(() => instance.put().catch(noop), Error, 'Throws error when passing no arguments');
-  t.throws(() => instance.put(1).catch(noop), Error, 'Throws error when passing invalid route');
-  t.throws(() => instance.put('').catch(noop), Error, 'Throws error when passing empty route');
-  t.throws(() => instance.put(route).catch(noop), Error, 'Throws error on missing data');
-  t.throws(() => instance.put(route, 2).catch(noop), Error, 'Throws error when passing invalid data');
-  t.doesNotThrow(() => instance.put(route, data).catch(noop), Error, 'Does not throw error when passing valid data');
-  t.ok(instance.put(route, data).catch(noop) instanceof Promise, 'Returns a Promise');
-  t.end();
-});
-
-test('RequestDispatcher#delete', t => {
-  t.throws(() => instance.delete().catch(noop), Error, 'Throws error when passing no arguments');
-  t.throws(() => instance.delete(1).catch(noop), Error, 'Throws error when passing invalid route');
-  t.throws(() => instance.delete('').catch(noop), Error, 'Throws error when passing empty route');
-  t.throws(() => instance.delete(route, 2).catch(noop), Error, 'Throws error when passing invalid data');
-  t.doesNotThrow(() => instance.delete(route).catch(noop), Error, 'Does not throw error when no data is passed');
-  t.ok(instance.delete(route, data).catch(noop) instanceof Promise, 'Returns a Promise');
-  t.end();
-});
+test('RequestDispatcher#get', t => reusableTesters.testRequestDispatcherCustomMethodWithOptionalDataParameter(t, instance, 'get'));
+test('RequestDispatcher#post', t => reusableTesters.testRequestDispatcherCustomMethodWithRequiredDataParameter(t, instance, 'post'));
+test('RequestDispatcher#put', t => reusableTesters.testRequestDispatcherCustomMethodWithRequiredDataParameter(t, instance, 'put'));
+test('RequestDispatcher#delete', t => reusableTesters.testRequestDispatcherCustomMethodWithOptionalDataParameter(t, instance, 'delete'));
 
 test('RequestDispatcher#uploadFile', t => {
-  const filePath = file;
-  const fileName = 'notes.txt';
-  const fieldNameForFile = 'filedata';
-  const fieldNameForFileName = 'name';
-
   t.throws(() => instance.uploadFile().catch(noop), Error, 'Throws error on missing parameters');
-  t.throws(() => instance.uploadFile(1).catch(noop), Error, 'Throws error on invalid route');
-  t.throws(() => instance.uploadFile('').catch(noop), Error, 'Throws error on empty route');
-  t.throws(() => instance.uploadFile(route, 1).catch(noop), Error, 'Throws error on invalid file path');
-  t.throws(() => instance.uploadFile(route, '').catch(noop), Error, 'Throws error on empty file path');
-  t.throws(() => instance.uploadFile(route, filePath, 1).catch(noop), Error, 'Throws error on invalid file name');
-  t.throws(() => instance.uploadFile(route, filePath, fileName, 1).catch(noop), Error, 'Throws error on invalid file post field name');
-  t.throws(() => instance.uploadFile(route, filePath, fileName, fieldNameForFile, 1).catch(noop), Error, 'Throws error on invalid file name post field name');
-  t.doesNotThrow(() => instance.uploadFile(route, filePath, fileName).catch(noop), Error, 'Does not throw error when the required parameters are passed');
-  t.ok(instance.uploadFile(route, filePath, fileName, fieldNameForFile, fieldNameForFileName).catch(noop) instanceof Promise, 'Returns a Promise');
+  t.throws(() => instance.uploadFile(variables.examples.number).catch(noop), Error, 'Throws error on invalid route');
+  t.throws(() => instance.uploadFile(variables.examples.string).catch(noop), Error, 'Throws error on empty route');
+  t.throws(() => instance.uploadFile(variables.examples.string, variables.examples.number).catch(noop), Error, 'Throws error on invalid file path');
+  t.throws(() => instance.uploadFile(variables.examples.string, variables.examples.string).catch(noop), Error, 'Throws error on empty file path');
+  t.throws(() => instance.uploadFile(variables.examples.string, file, variables.examples.number).catch(noop), Error, 'Throws error on invalid file name');
+  t.throws(() => instance.uploadFile(variables.examples.string, file, variables.examples.string, variables.examples.number).catch(noop), Error, 'Throws error on invalid file post field name');
+  t.throws(() => instance.uploadFile(variables.examples.string, file, variables.examples.string, variables.examples.string, variables.examples.number).catch(noop), Error, 'Throws error on invalid file name post field name');
+  t.doesNotThrow(() => instance.uploadFile(variables.examples.string, file, variables.examples.string).catch(noop), Error, 'Does not throw error when the required parameters are passed');
+  t.ok(instance.uploadFile(variables.examples.string, file, variables.examples.string, variables.examples.string, variables.examples.string).catch(noop) instanceof Promise, 'Returns a Promise');
   t.end();
 });
