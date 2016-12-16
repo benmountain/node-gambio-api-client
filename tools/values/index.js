@@ -1,6 +1,7 @@
 import * as paths from './paths';
-import * as fileContents from './fileContents';
+import * as files from './files';
 
 export { extensions } from './extensions';
 export { globs } from './globs';
-export { paths, fileContents };
+export { variables } from './variables';
+export { paths, files };

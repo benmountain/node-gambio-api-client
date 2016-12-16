@@ -1,5 +1,6 @@
 import { noop } from '.';
-import { variables, loginData } from './../values';
+import { variables } from './../values';
+import { login } from './../fixtures';
 import { RequestDispatcher } from './../../../distribution/scripts';
 
 /**
@@ -8,7 +9,7 @@ import { RequestDispatcher } from './../../../distribution/scripts';
  * @param {Object} ClassToInstantiate Class to instantiate.
  */
 function testEndpointConnectorConstructor(testSpec, ClassToInstantiate) {
-  const requestDispatcher = new RequestDispatcher(loginData);
+  const requestDispatcher = new RequestDispatcher(login);
 
   testSpec.throws(() => new ClassToInstantiate(), Error, 'Throws error on missing parameter');
   testSpec.throws(() => new ClassToInstantiate(variables.numbers.positive), Error, 'Throws error on invalid parameter');

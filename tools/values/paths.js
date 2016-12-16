@@ -1,8 +1,8 @@
 import path from 'path';
 
 const directories = {
-  source: path.join(__dirname, '..', '..', '..', 'source'),
-  destination: path.join(__dirname, '..', '..', '..', 'distribution'),
+  source: path.join(__dirname, '..', '..', 'source'),
+  destination: path.join(__dirname, '..', '..', 'distribution'),
 };
 
 const destination = {
