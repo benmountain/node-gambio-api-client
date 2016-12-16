@@ -5,6 +5,11 @@ const variables = {
     object: { university: 'Havard' },
     array: ['books', 'football', 'music'],
   },
+
+  empty: {
+    string: '',
+    object: {},
+  },
 };
 
 export { variables };
