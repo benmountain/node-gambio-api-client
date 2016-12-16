@@ -1,4 +1,4 @@
-import { category, image } from './../../tools/tests/fixtures';
+import { category, image } from './../../tools/fixtures';
 
 const imagePath = image;
 const imageName = 'hey.png';

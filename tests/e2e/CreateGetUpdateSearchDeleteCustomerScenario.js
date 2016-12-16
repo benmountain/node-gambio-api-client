@@ -1,4 +1,4 @@
-import { customer } from './../../tools/tests/fixtures';
+import { customer } from './../../tools/fixtures';
 
 const invoker = client => client.customers
   .create(customer)

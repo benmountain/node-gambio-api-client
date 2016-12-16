@@ -1,4 +1,4 @@
-import { address } from './../../tools/tests/fixtures';
+import { address } from './../../tools/fixtures';
 
 const invoker = client => client.addresses
   .create(address)

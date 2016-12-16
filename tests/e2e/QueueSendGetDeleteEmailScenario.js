@@ -1,4 +1,4 @@
-import { email, image } from './../../tools/tests/fixtures';
+import { email, image } from './../../tools/fixtures';
 
 const attachmentPath = image;
 const attachmentName = 'hey.png';
