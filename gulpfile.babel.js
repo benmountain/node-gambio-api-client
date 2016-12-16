@@ -1,1 +1,1 @@
-require('gulp-require-tasks')({ path: process.cwd() + '/tools/gulp/tasks' });
+require('gulp-require-tasks')({ path: process.cwd() + '/tools/tasks' });
