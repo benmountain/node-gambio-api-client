@@ -23,77 +23,12 @@ class EmailEndpointConnector extends AbstractEndpointConnector {
   }
 
   /**
-   * Creates an instance of EmailEndpointConnector.
-   * @param {RequestDispatcher} requestDispatcher Request dispatcher.
-   */
-  constructor(requestDispatcher: RequestDispatcher) {
-    super(requestDispatcher);
-  }
-
-  /**
-   * Deletes an Email by its ID.
-   * @param {Number} id Email ID.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid ID parameter.
-   */
-  public delete(id: number): Promise<ResponseInterface> {
-    // Check ID parameter.
-    if (!id || typeof id !== 'number') {
-      throw new Error('Missing or invalid Email ID');
-    }
-
-    // Perform request.
-    return this.requestDispatcher.delete(`${this.getRoute()}/${id}`);
-  }
-
-  /**
-   * Returns all Emails.
-   * @param {GetOptionsInterface} [options] GET request modifier options.
-   * @returns {Promise} Request promise.
-   */
-  public get(options?: GetOptionsInterface): Promise<ResponseInterface> {
-    return this.requestDispatcher.get(this.getRoute(), this.parseGetOptions(options));
-  }
-
-  /**
-   * Returns an Email.
-   * @param {Number} id Email ID.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid ID parameter.
-   */
-  public getById(id: number): Promise<ResponseInterface> {
-    // Check ID parameter.
-    if (!id || typeof id !== 'number') {
-      throw new Error('Missing or invalid Email ID');
-    }
-
-    // Perform request.
-    return this.requestDispatcher.get(`${this.getRoute()}/${id}`);
-  }
-
-  /**
    * Returns all pending Emails.
    * @param {GetOptionsInterface} [options] GET request modifier options.
    * @returns {Promise} Request promise.
    */
   public getPending(options?: GetOptionsInterface): Promise<ResponseInterface> {
     return this.requestDispatcher.get(this.getRoute(), Object.assign({}, this.parseGetOptions(options), { state: 'pending' }));
-  }
-
-  /**
-   * Searches the Emails with the passed term.
-   * @param {String} term Search term.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid search term parameter.
-   */
-  public search(term: string): Promise<ResponseInterface> {
-    // Check search term parameter.
-    if (!term || typeof term !== 'string') {
-      throw new Error('Missing or invalid search term');
-    }
-
-    // Perform request.
-    return this.requestDispatcher.get(this.getRoute(), { q: term });
   }
 
   /**

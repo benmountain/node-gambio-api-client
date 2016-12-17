@@ -11,14 +11,6 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
   }
 
   /**
-   * Creates an instance of OrderEndpointConnector.
-   * @param {RequestDispatcher} requestDispatcher Request dispatcher.
-   */
-  constructor(requestDispatcher: RequestDispatcher) {
-    super(requestDispatcher);
-  }
-
-  /**
    * Creates an order item attribute.
    * @param {Number} orderId Order ID.
    * @param {Number} orderItemId Order item ID.
@@ -92,22 +84,6 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
 
     // Perform request.
     return this.requestDispatcher.post(`${this.getRoute()}/${orderId}/totals`, data);
-  }
-
-  /**
-   * Creates an order.
-   * @param {Object} data Order data.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid data parameter.
-   */
-  public create(data: {}): Promise<ResponseInterface> {
-    // Check data parameter.
-    if (!data || typeof data !== 'object') {
-      throw new Error('Missing or invalid order data');
-    }
-
-    // Perform request.
-    return this.requestDispatcher.post(this.getRoute(), data);
   }
 
   /**
@@ -214,22 +190,6 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
 
     // Perform request.
     return this.requestDispatcher.delete(`${this.getRoute()}/${orderId}/totals/${orderTotalId}`);
-  }
-
-  /**
-   * Deletes an order by its ID.
-   * @param {Number} id Order ID.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid ID parameter.
-   */
-  public delete(id: number): Promise<ResponseInterface> {
-    // Check ID parameter.
-    if (!id || typeof id !== 'number') {
-      throw new Error('Missing or invalid order ID');
-    }
-
-    // Perform request.
-    return this.requestDispatcher.delete(`${this.getRoute()}/${id}`);
   }
 
   /**
@@ -453,47 +413,6 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
 
     // Perform request.
     return this.requestDispatcher.get(`${this.getRoute()}/${orderId}/items/${orderTotalId}`);
-  }
-
-  /**
-   * Returns all orders.
-   * @param {GetOptionsInterface} [options] GET request modifier options.
-   * @returns {Promise} Request promise.
-   */
-  public get(options?: GetOptionsInterface): Promise<ResponseInterface> {
-    return this.requestDispatcher.get(this.getRoute(), this.parseGetOptions(options));
-  }
-
-  /**
-   * Returns a order.
-   * @param {Number} id Order ID.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid ID parameter.
-   */
-  public getById(id: number): Promise<ResponseInterface> {
-    // Check ID parameter.
-    if (!id || typeof id !== 'number') {
-      throw new Error('Missing or invalid order ID');
-    }
-
-    // Perform request.
-    return this.requestDispatcher.get(`${this.getRoute()}/${id}`);
-  }
-
- /**
-   * Searches the orders with the passed term.
-   * @param {String} term Search term.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid search term parameter.
-   */
-  public search(term: string): Promise<ResponseInterface> {
-    // Check search term parameter.
-    if (!term || typeof term !== 'string') {
-      throw new Error('Missing or invalid search term');
-    }
-
-    // Perform request.
-    return this.requestDispatcher.get(this.getRoute(), { q: term });
   }
 }
 

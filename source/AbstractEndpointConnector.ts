@@ -1,5 +1,5 @@
 import { RequestDispatcher } from '.';
-import { GetOptionsInterface } from './Interfaces';
+import { GetOptionsInterface, ResponseInterface } from './Interfaces';
 
 abstract class AbstractEndpointConnector {
   /**
@@ -58,6 +58,102 @@ abstract class AbstractEndpointConnector {
     }
 
     return result;
+  }
+
+  /**
+   * Creates a new entries of the endpoint resource.
+   * @param {Object} data Entry data.
+   * @returns {Promise} Request promise.
+   * @throws Will throw error on missing or invalid data parameter.
+   */
+  public create(data: {}): Promise<ResponseInterface> {
+    // Check data parameter.
+    if (!data || typeof data !== 'object') {
+      throw new Error('Missing or invalid data');
+    }
+
+    // Perform request.
+    return this.requestDispatcher.post(this.getRoute(), data);
+  }
+
+  /**
+   * Returns all entries of the endpoint resource.
+   * @param {GetOptionsInterface} [options] GET request modifier options.
+   * @returns {Promise} Request promise.
+   */
+  public get(options?: GetOptionsInterface): Promise<ResponseInterface> {
+    return this.requestDispatcher.get(this.getRoute(), this.parseGetOptions(options));
+  }
+
+  /**
+   * Returns an entry of the endpoint resource.
+   * @param {Number} id Entry ID.
+   * @returns {Promise} Request promise.
+   * @throws Will throw error on missing or invalid ID parameter.
+   */
+  public getById(id: number): Promise<ResponseInterface> {
+    // Check ID parameter.
+    if (!id || typeof id !== 'number') {
+      throw new Error('Missing or invalid ID');
+    }
+
+    // Perform request.
+    return this.requestDispatcher.get(`${this.getRoute()}/${id}`);
+  }
+
+  /**
+   * Deletes an entry by its ID of the endpoint resource.
+   * @param {Number} id Entry ID.
+   * @returns {Promise} Request promise.
+   * @throws Will throw error on missing or invalid ID parameter.
+   */
+  public delete(id: number): Promise<ResponseInterface> {
+    // Check ID parameter.
+    if (!id || typeof id !== 'number') {
+      throw new Error('Missing or invalid ID');
+    }
+
+    // Perform request.
+    return this.requestDispatcher.delete(`${this.getRoute()}/${id}`);
+  }
+
+  /**
+   * Searches the endpoint resource with the passed term.
+   * @param {String} term Search term.
+   * @returns {Promise} Request promise.
+   * @throws Will throw error on missing or invalid search term parameter.
+   */
+  public search(term: string): Promise<ResponseInterface> {
+    // Check search term parameter.
+    if (!term || typeof term !== 'string') {
+      throw new Error('Missing or invalid search term');
+    }
+
+    // Perform request.
+    return this.requestDispatcher.get(this.getRoute(), { q: term });
+  }
+
+  /**
+   * Updates an entry of the endpoint resource.
+   * @param {number} id Entry ID.
+   * @param {Object} data Entry data.
+   * @returns {Promise} Request promise.
+   * @throws Will throw error on missing or invalid ID parameter.
+   * @throws Will throw error on missing or invalid data parameter.
+   */
+  public update(id: number, data: {}): Promise<ResponseInterface> {
+    // Check ID parameter.
+    if (!id || typeof id !== 'number') {
+      throw new Error('Missing or invalid ID');
+    }
+
+    // Check data parameter.
+    if (!data || typeof data !== 'object') {
+      throw new Error('Missing or invalid data');
+    }
+
+    // Perform request.
+    return this.requestDispatcher.put(`${this.getRoute()}/${id}`, data);
   }
 
   /**

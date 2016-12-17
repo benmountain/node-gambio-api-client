@@ -26,30 +26,6 @@ class CategoryEndpointConnector extends AbstractEndpointConnector {
   }
 
   /**
-   * Creates an instance of CategoryEndpointConnector.
-   * @param {RequestDispatcher} requestDispatcher Request dispatcher.
-   */
-  constructor(requestDispatcher: RequestDispatcher) {
-    super(requestDispatcher);
-  }
-
-  /**
-   * Creates a new category.
-   * @param {Object} data Category data.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid data parameter.
-   */
-  public create(data: {}): Promise<ResponseInterface> {
-    // Check data parameter.
-    if (!data || typeof data !== 'object') {
-      throw new Error('Missing or invalid category data');
-    }
-
-    // Perform request.
-    return this.requestDispatcher.post(this.getRoute(), data);
-  }
-
-  /**
    * Deletes a category icon by its file name.
    * @param {String} fileName File name.
    * @returns {Promise} Request promise.
@@ -82,47 +58,6 @@ class CategoryEndpointConnector extends AbstractEndpointConnector {
   }
 
   /**
-   * Deletes a category by its ID.
-   * @param {Number} id Category ID.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid ID parameter.
-   */
-  public delete(id: number): Promise<ResponseInterface> {
-    // Check ID parameter.
-    if (!id || typeof id !== 'number') {
-      throw new Error('Missing or invalid category ID');
-    }
-
-    // Perform request.
-    return this.requestDispatcher.delete(`${this.getRoute()}/${id}`);
-  }
-
-  /**
-   * Returns all categories.
-   * @param {GetOptionsInterface} [options] GET request modifier options.
-   * @returns {Promise} Request promise.
-   */
-  public get(options?: GetOptionsInterface): Promise<ResponseInterface> {
-    return this.requestDispatcher.get(this.getRoute(), this.parseGetOptions(options));
-  }
-
-  /**
-   * Returns a category.
-   * @param {Number} id Category ID.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid ID parameter.
-   */
-  public getById(id: number): Promise<ResponseInterface> {
-    // Check ID parameter.
-    if (!id || typeof id !== 'number') {
-      throw new Error('Missing or invalid category ID');
-    }
-
-    // Perform request.
-    return this.requestDispatcher.get(`${this.getRoute()}/${id}`);
-  }
-
-  /**
    * Returns the children of a category.
    * @param {Number} id Category ID.
    * @returns {Promise} Request promise.
@@ -136,22 +71,6 @@ class CategoryEndpointConnector extends AbstractEndpointConnector {
 
     // Perform request.
     return this.requestDispatcher.get(`${this.getRoute()}/${id}/children`);
-  }
-
-  /**
-   * Searches the categories with the passed term.
-   * @param {String} term Search term.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid search term parameter.
-   */
-  public search(term: string): Promise<ResponseInterface> {
-    // Check search term parameter.
-    if (!term || typeof term !== 'string') {
-      throw new Error('Missing or invalid search term');
-    }
-
-    // Perform request.
-    return this.requestDispatcher.get(this.getRoute(), { q: term });
   }
 
   /**
@@ -214,29 +133,6 @@ class CategoryEndpointConnector extends AbstractEndpointConnector {
 
     // Perform request.
     return this.requestDispatcher.put(this.routes.images, { oldFilename, newFilename });
-  }
-
-  /**
-   * Updates a category.
-   * @param {number} id Category ID.
-   * @param {Object} data Category data.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid ID parameter.
-   * @throws Will throw error on missing or invalid data parameter.
-   */
-  public update(id: number, data: {}): Promise<ResponseInterface> {
-    // Check ID parameter.
-    if (!id || typeof id !== 'number') {
-      throw new Error('Missing or invalid category ID');
-    }
-
-    // Check data parameter.
-    if (!data || typeof data !== 'object') {
-      throw new Error('Missing or invalid category data');
-    }
-
-    // Perform request.
-    return this.requestDispatcher.put(`${this.getRoute()}/${id}`, data);
   }
 
   /**

@@ -11,30 +11,6 @@ class CountryEndpointConnector extends AbstractEndpointConnector {
   }
 
   /**
-   * Creates an instance of CountryEndpointConnector.
-   * @param {RequestDispatcher} requestDispatcher Request dispatcher.
-   */
-  constructor(requestDispatcher: RequestDispatcher) {
-    super(requestDispatcher);
-  }
-
-  /**
-   * Returns a country.
-   * @param {Number} id Country ID.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid ID parameter.
-   */
-  public getById(id: number): Promise<ResponseInterface> {
-    // Check ID parameter.
-    if (!id || typeof id !== 'number') {
-      throw new Error('Missing or invalid country ID');
-    }
-
-    // Perform request.
-    return this.requestDispatcher.get(`${this.getRoute()}/${id}`);
-  }
-
-  /**
    * Returns the zones for a country.
    * @param {Number} id Country ID.
    * @returns {Promise} Request promise.
