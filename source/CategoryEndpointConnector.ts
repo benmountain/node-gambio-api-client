@@ -63,7 +63,7 @@ class CategoryEndpointConnector extends AbstractEndpointConnector {
    * @returns {Promise} Request promise.
    * @throws Will throw error on missing or invalid ID parameter.
    */
-  public getChildrenById(id: number): Promise<ResponseInterface> {
+  public getChild(id: number): Promise<ResponseInterface> {
     // Check ID parameter.
     if (!id || typeof id !== 'number') {
       throw new Error('Missing or invalid category ID');

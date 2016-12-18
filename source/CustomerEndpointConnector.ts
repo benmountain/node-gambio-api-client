@@ -25,7 +25,7 @@ class CustomerEndpointConnector extends AbstractEndpointConnector {
    * @returns {Promise} Request promise.
    * @throws Will throw error on missing or invalid ID parameter.
    */
-  public getAddressesByCustomerId(id: number): Promise<ResponseInterface> {
+  public getAddresses(id: number): Promise<ResponseInterface> {
     // Check ID parameter.
     if (!id || typeof id !== 'number') {
       throw new Error('Missing or invalid customer ID');

@@ -12,6 +12,6 @@ test('CustomerEndpointConnector#delete', t => reusableTesters.testEndpointConnec
 test('CustomerEndpointConnector#get', t => reusableTesters.testEndpointConnectorGetMethod(t, instance));
 test('CustomerEndpointConnector#getGuests', t => reusableTesters.testEndpointConnectorCustomMethodWithNoParameters(t, instance, 'getGuests'));
 test('CustomerEndpointConnector#getById', t => reusableTesters.testEndpointConnectorGetByIdMethod(t, instance));
-test('CustomerEndpointConnector#getAddressesByCustomerId', t => reusableTesters.testEndpointConnectorCustomMethodWithRequiredParameter(t, instance, 'getAddressesByCustomerId', variables.examples.number));
+test('CustomerEndpointConnector#getAddresses', t => reusableTesters.testEndpointConnectorCustomMethodWithRequiredParameter(t, instance, 'getAddresses', variables.examples.number));
 test('CustomerEndpointConnector#search', t => reusableTesters.testEndpointConnectorSearchMethod(t, instance));
 test('CustomerEndpointConnector#update', t => reusableTesters.testEndpointConnectorUpdateMethod(t, instance));
