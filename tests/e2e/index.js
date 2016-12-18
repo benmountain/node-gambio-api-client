@@ -1,15 +1,15 @@
-import CreateClientInstanceScenario from './CreateClientInstanceScenario';
-import CreateGetUpdateSearchDeleteAddressScenario from './CreateGetUpdateSearchDeleteAddressScenario';
-import CreateGetUpdateSearchDeleteCategoryScenario from './CreateGetUpdateSearchDeleteCategoryScenario';
-import GetCountryAndZonesScenario from './GetCountryAndZonesScenario';
-import CreateGetUpdateSearchDeleteCustomerScenario from './CreateGetUpdateSearchDeleteCustomerScenario';
-import QueueSendGetDeleteEmailScenario from './QueueSendGetDeleteEmailScenario';
-import CreateGetUpdateSearchDeleteOrderScenario from './CreateGetUpdateSearchDeleteOrderScenario';
+import ClientUsage from './ClientUsage';
+import AddressUsage from './AddressUsage';
+import CategoryUsage from './CategoryUsage';
+import ZoneUsage from './ZoneUsage';
+import CustomerUsage from './CustomerUsage';
+import EmailUsage from './EmailUsage';
+import OrderUsage from './OrderUsage';
 
-CreateClientInstanceScenario()
-  .then(CreateGetUpdateSearchDeleteAddressScenario)
-  .then(CreateGetUpdateSearchDeleteCategoryScenario)
-  .then(GetCountryAndZonesScenario)
-  .then(CreateGetUpdateSearchDeleteCustomerScenario)
-  .then(QueueSendGetDeleteEmailScenario)
-  .then(CreateGetUpdateSearchDeleteOrderScenario);
+ClientUsage()
+  .then(AddressUsage)
+  .then(CategoryUsage)
+  .then(ZoneUsage)
+  .then(CustomerUsage)
+  .then(EmailUsage)
+  .then(OrderUsage);
