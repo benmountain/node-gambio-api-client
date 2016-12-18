@@ -3,6 +3,7 @@ enum HttpMethodsEnum {
   POST,
   PUT,
   DELETE,
+  PATCH,
 }
 
 export { HttpMethodsEnum };

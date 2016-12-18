@@ -109,7 +109,7 @@ class RequestDispatcher implements RequestDispatcherInterface {
       // Response handler.
       const responseHandler = (error: Error, response: ResponseInterface) => {
         // Parsed response.
-        let parsed : string | {} = null;
+        let parsed: string | {} = null;
 
         // Reject promise with the error parameter, if defined.
         if (error) {
@@ -176,7 +176,7 @@ class RequestDispatcher implements RequestDispatcherInterface {
    * @throws Will throw an error if the data object is not an object.
    * @returns {Promise} Request promise.
    */
-  post(route: string, data: {}): Promise<ResponseInterface> {
+  public post(route: string, data: {}): Promise<ResponseInterface> {
     // Check URL parameter.
     if (!route || typeof route !== 'string') {
       throw new Error('Missing or invalid route');
@@ -199,7 +199,7 @@ class RequestDispatcher implements RequestDispatcherInterface {
    * @throws Will throw an error if the data object is not an object.
    * @returns {Promise} Request promise.
    */
-  put(route: string, data: {}): Promise<ResponseInterface> {
+  public put(route: string, data: {}): Promise<ResponseInterface> {
     // Check URL parameter.
     if (!route || typeof route !== 'string') {
       throw new Error('Missing or invalid route');
@@ -212,6 +212,29 @@ class RequestDispatcher implements RequestDispatcherInterface {
 
     // Perform request.
     return this.performRequest(route, HttpMethodsEnum.PUT, data);
+  }
+
+  /**
+   * Performs a HTTP PATCH request to a specific endpoint and returns a promise.
+   * @param {String} route Endpoint route to perform the request to.
+   * @param {Object} data Request data.
+   * @throws Will throw an error if the request route is empty or not a string.
+   * @throws Will throw an error if the data object is not an object.
+   * @returns {Promise} Request promise.
+   */
+  public patch(route: string, data: {}): Promise<ResponseInterface> {
+    // Check URL parameter.
+    if (!route || typeof route !== 'string') {
+      throw new Error('Missing or invalid route');
+    }
+
+    // Check data parameter.
+    if (!data || typeof data !== 'object') {
+      throw new Error('Missing or invalid request data');
+    }
+
+    // Perform request.
+    return this.performRequest(route, HttpMethodsEnum.PATCH, data);
   }
 
   /**
@@ -251,7 +274,7 @@ class RequestDispatcher implements RequestDispatcherInterface {
    * @throws Will throw an error if the file name post field name not a string.
    * @returns {Promise} Request promise.
    */
-  uploadFile(route: string, filePath: string, fileName: string, filePostFieldName: string = 'file', fileNamePostFieldName: string = 'filename'): Promise<ResponseInterface> {
+  public uploadFile(route: string, filePath: string, fileName: string, filePostFieldName: string = 'file', fileNamePostFieldName: string = 'filename'): Promise<ResponseInterface> {
     // Check route parameter.
     if (!route || typeof route !== 'string') {
       throw new Error('Missing or invalid route');
