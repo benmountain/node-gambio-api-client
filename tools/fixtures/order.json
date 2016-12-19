@@ -40,7 +40,7 @@
       "postcode": "28219",
       "city": "Bremen",
       "countryId": 81,
-      "zoneId": 0,
+      "zoneId": 84,
       "b2bStatus": false
     },
     "billing": {
@@ -55,7 +55,7 @@
       "postcode": "28219",
       "city": "Bremen",
       "countryId": 81,
-      "zoneId": 0,
+      "zoneId": 84,
       "b2bStatus": false
     },
     "delivery": {
@@ -70,7 +70,7 @@
       "postcode": "28219",
       "city": "Bremen",
       "countryId": 81,
-      "zoneId": 0,
+      "zoneId": 84,
       "b2bStatus": false
     }
   },
