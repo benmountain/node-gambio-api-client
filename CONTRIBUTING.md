@@ -120,3 +120,5 @@ Everyone is welcome to send pull requests.
 - Lint your code
 - Follow semantic versioning scheme
 - Make entries to the changelog file
+- Document you code using JSDoc documentation blocks
+- Describe your method in API documentation file
