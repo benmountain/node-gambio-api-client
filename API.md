@@ -24,7 +24,9 @@
   - [Rename category image](#rename-category-image)
   - [Upload category icon](#upload-category-icon)
   - [Upload category image](#upload-category-image)
-- Countries
+- [Countries](#countries)
+  - [Get specific country](#get-specific-country)
+  - [Get zones of a country](#get-zones-of-a-country)
 - Customers
 - Emails
 - Orders
@@ -226,3 +228,25 @@
 
 - `path` - Path to category image (String)
 - `name` - Desired file name (String)
+
+## Countries
+
+### Get specific country
+
+#### Usage
+
+`instance.countries.getById(id)`
+
+#### Parameters
+
+- `id` - Country ID (Number)
+
+### Get zones of a country
+
+#### Usage
+
+`instance.countries.getZonesByCountryId(id)`
+
+#### Parameters
+
+- `id` - Country ID (Number)
