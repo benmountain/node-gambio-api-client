@@ -8,4 +8,4 @@ const instance = new CountryEndpointConnector(new RequestDispatcher(login));
 
 test('CountryEndpointConnector#constructor', t => reusableTesters.testEndpointConnectorConstructor(t, CountryEndpointConnector));
 test('CountryEndpointConnector#getById', t => reusableTesters.testEndpointConnectorGetByIdMethod(t, instance));
-test('CountryEndpointConnector#deleteImage', t => reusableTesters.testEndpointConnectorCustomMethodWithRequiredParameter(t, instance, 'getZonesByCountryId', variables.examples.number));
+test('CountryEndpointConnector#getZonesByCountryId', t => reusableTesters.testEndpointConnectorCustomMethodWithRequiredParameter(t, instance, 'getZonesByCountryId', variables.examples.number));
