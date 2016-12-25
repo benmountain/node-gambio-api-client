@@ -30,6 +30,8 @@
 - Customers
 - Emails
 - Orders
+- Products
+- Zones
 
 ## Adresses
 
