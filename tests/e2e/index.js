@@ -5,6 +5,8 @@ import CountryUsage from './CountryUsage';
 import CustomerUsage from './CustomerUsage';
 import EmailUsage from './EmailUsage';
 import OrderUsage from './OrderUsage';
+import ProductUsage from './ProductUsage';
+import ZoneUsage from './ZoneUsage';
 
 ClientUsage()
   .then(AddressUsage)
@@ -12,4 +14,7 @@ ClientUsage()
   .then(CountryUsage)
   .then(CustomerUsage)
   .then(EmailUsage)
-  .then(OrderUsage);
+  .then(OrderUsage)
+  .then(ProductUsage)
+  .then(ZoneUsage)
+  .catch(console.error);

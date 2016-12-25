@@ -8,3 +8,5 @@ export { CountryEndpointConnector } from './CountryEndpointConnector';
 export { CustomerEndpointConnector } from './CustomerEndpointConnector';
 export { EmailEndpointConnector } from './EmailEndpointConnector';
 export { OrderEndpointConnector } from './OrderEndpointConnector';
+export { ProductEndpointConnector } from './ProductEndpointConnector';
+export { ZoneEndpointConnector } from './ZoneEndpointConnector';
