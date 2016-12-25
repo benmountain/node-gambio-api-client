@@ -12,9 +12,13 @@ import {
 import { HttpMethodsEnum } from './Enums';
 import { Configuration } from '.';
 
+/**
+ * Performs requests to the shop's endpoints.
+ * @implements {RequestDispatcherInterface}
+ */
 class RequestDispatcher implements RequestDispatcherInterface {
   /**
-   * Request headers.
+   * Default request headers.
    * @type {Object}
    */
   private headers = {
@@ -22,7 +26,7 @@ class RequestDispatcher implements RequestDispatcherInterface {
   };
 
   /**
-   * Request authentication.
+   * Request authentication options.
    * @type {RequestAuthOptionsInterface}
    */
   private auth: RequestAuthOptionsInterface;
@@ -35,6 +39,10 @@ class RequestDispatcher implements RequestDispatcherInterface {
 
   /**
    * Creates an instance of RequestDispatcher.
+   * @throws {Error} Missing or invalid client options.
+   * @throws {Error} Missing or invalid shop URL.
+   * @throws {Error} Missing or invalid shop user.
+   * @throws {Error} Missing or invalid shop password.
    */
   constructor(options: ClientOptionsInterface) {
     // Check parameter.
@@ -85,7 +93,7 @@ class RequestDispatcher implements RequestDispatcherInterface {
    * @param {HttpMethodsEnum} method HTTP request method.
    * @param {Object} [data] Request data.
    * @param {Boolean} [hasFormData] Is the data object a form data object?
-   * @returns {Promise} Request promise.
+   * @returns {Promise}
    */
   private performRequest(route: string, method: HttpMethodsEnum, data?: {}, hasFormData: boolean = false): Promise<ResponseInterface> {
     // Get HTTP method name.
@@ -149,9 +157,9 @@ class RequestDispatcher implements RequestDispatcherInterface {
    * Performs a HTTP GET request to a specific endpoint and returns a promise.
    * @param {String} route Endpoint route to perform the request to.
    * @param {Object} [data] Request data.
-   * @throws Will throw an error if the request route is empty or not a string.
-   * @throws Will throw an error if the data object is not an object.
-   * @returns {Promise} Request promise.
+   * @throws {Error} Request route is empty or not a string.
+   * @throws {Error} Data object is not an object.
+   * @returns {Promise}
    */
   public get(route: string, data?: {}): Promise<ResponseInterface> {
     // Check URL parameter.
@@ -172,9 +180,9 @@ class RequestDispatcher implements RequestDispatcherInterface {
    * Performs a HTTP POST request to a specific endpoint and returns a promise.
    * @param {String} route Endpoint route to perform the request to.
    * @param {Object} data Request data.
-   * @throws Will throw an error if the request route is empty or not a string.
-   * @throws Will throw an error if the data object is not an object.
-   * @returns {Promise} Request promise.
+   * @throws {Error} Request route is empty or not a string.
+   * @throws {Error} Data object is not an object.
+   * @returns {Promise}
    */
   public post(route: string, data: {}): Promise<ResponseInterface> {
     // Check URL parameter.
@@ -195,9 +203,9 @@ class RequestDispatcher implements RequestDispatcherInterface {
    * Performs a HTTP PUT request to a specific endpoint and returns a promise.
    * @param {String} route Endpoint route to perform the request to.
    * @param {Object} data Request data.
-   * @throws Will throw an error if the request route is empty or not a string.
-   * @throws Will throw an error if the data object is not an object.
-   * @returns {Promise} Request promise.
+   * @throws {Error} Request route is empty or not a string.
+   * @throws {Error} Data object is not an object.
+   * @returns {Promise}
    */
   public put(route: string, data: {}): Promise<ResponseInterface> {
     // Check URL parameter.
@@ -218,9 +226,9 @@ class RequestDispatcher implements RequestDispatcherInterface {
    * Performs a HTTP PATCH request to a specific endpoint and returns a promise.
    * @param {String} route Endpoint route to perform the request to.
    * @param {Object} data Request data.
-   * @throws Will throw an error if the request route is empty or not a string.
-   * @throws Will throw an error if the data object is not an object.
-   * @returns {Promise} Request promise.
+   * @throws {Error} Request route is empty or not a string.
+   * @throws {Error} Data object is not an object.
+   * @returns {Promise}
    */
   public patch(route: string, data: {}): Promise<ResponseInterface> {
     // Check URL parameter.
@@ -241,9 +249,9 @@ class RequestDispatcher implements RequestDispatcherInterface {
    * Performs a HTTP DELETE request to a specific endpoint and returns a promise.
    * @param {String} route Endpoint route to perform the request to.
    * @param {Object} [data] Request data.
-   * @throws Will throw an error if the request route is empty or not a string.
-   * @throws Will throw an error if the data object is not an object.
-   * @returns {Promise} Request promise.
+   * @throws {Error} Request route is empty or not a string.
+   * @throws {Error} Data object is not an object.
+   * @returns {Promise}
    */
   public delete(route: string, data?: {}): Promise<ResponseInterface> {
     // Check URL parameter.
@@ -267,12 +275,12 @@ class RequestDispatcher implements RequestDispatcherInterface {
    * @param {String} fileName File name.
    * @param {String} [filePostFieldName] Post field name for the file.
    * @param {String} [fileNamePostFieldName] Post field name for the file name.
-   * @throws Will throw an error if the request route is empty or not a string.
-   * @throws Will throw an error if the file path is empty or not a string.
-   * @throws Will throw an error if the file name is empty or not a string.
-   * @throws Will throw an error if the file post field name not a string.
-   * @throws Will throw an error if the file name post field name not a string.
-   * @returns {Promise} Request promise.
+   * @throws {Error} Request route is empty or not a string.
+   * @throws {Error} File path is empty or not a string.
+   * @throws {Error} File name is empty or not a string.
+   * @throws {Error} File post field name not a string.
+   * @throws {Error} File name post field name not a string.
+   * @returns {Promise}
    */
   public uploadFile(route: string, filePath: string, fileName: string, filePostFieldName: string = 'file', fileNamePostFieldName: string = 'filename'): Promise<ResponseInterface> {
     // Check route parameter.

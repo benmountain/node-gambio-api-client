@@ -1,3 +1,7 @@
+/**
+ * Globs.
+ * @type {Object}
+ */
 const globs = {
   recursive: '**/*',
 };

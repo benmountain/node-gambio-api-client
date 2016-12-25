@@ -1,3 +1,7 @@
+/**
+ * GET request modification options provided by the Gambio REST-API.
+ * @interface GetOptionsInterface
+ */
 interface GetOptionsInterface {
   /**
    * Which page to show?

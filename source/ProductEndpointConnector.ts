@@ -1,6 +1,10 @@
 import { AbstractEndpointConnector, RequestDispatcher } from '.';
 import { ResponseInterface, GetOptionsInterface } from './Interfaces';
 
+/**
+ * Provides methods to perform requests to the shop's product endpoint.
+ * @extends {AbstractEndpointConnector}
+ */
 class ProductEndpointConnector extends AbstractEndpointConnector {
   /**
    * Product endpoint routes.
@@ -26,9 +30,9 @@ class ProductEndpointConnector extends AbstractEndpointConnector {
    * Creates a new product link.
    * @param {Number} productId Product ID.
    * @param {Number} categoryId Category ID to link.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid product ID.
-   * @throws Will throw error on missing or invalid category ID.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid product ID.
+   * @throws {Error} Missing or invalid category ID.
    */
   public createLink(productId: number, categoryId: number): Promise<ResponseInterface> {
     // Check product ID parameter.
@@ -48,8 +52,8 @@ class ProductEndpointConnector extends AbstractEndpointConnector {
   /**
    * Deletes a product image.
    * @param {String} filename Product image file name.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid file name.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid file name.
    */
   public deleteImage(filename: string): Promise<ResponseInterface> {
     if (!filename || typeof filename !== 'string') {
@@ -63,8 +67,8 @@ class ProductEndpointConnector extends AbstractEndpointConnector {
   /**
    * Deletes all product links.
    * @param {Number} id Product ID.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid product ID.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid product ID.
    */
   public deleteLinks(id: number): Promise<ResponseInterface> {
     // Check product ID parameter.
@@ -80,9 +84,9 @@ class ProductEndpointConnector extends AbstractEndpointConnector {
    * Deletes a product link.
    * @param {Number} productId Product ID.
    * @param {Number} categoryId Linked category ID.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid product ID.
-   * @throws Will throw error on missing or invalid category ID.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid product ID.
+   * @throws {Error} Missing or invalid category ID.
    */
   public deleteLink(productId: number, categoryId: number) {
     // Check product ID parameter.
@@ -103,7 +107,7 @@ class ProductEndpointConnector extends AbstractEndpointConnector {
    * Returns all product links.
    * @param {Number} id Product ID.
    * @param {GetOptionsInterface} [options] GET request modifier options.
-   * @returns {Promise} Request promise.
+   * @returns {Promise}
    */
   public getLinks(id: number, options?: GetOptionsInterface): Promise<ResponseInterface> {
     // Check product ID parameter.
@@ -119,9 +123,9 @@ class ProductEndpointConnector extends AbstractEndpointConnector {
    * Returns a product link.
    * @param {Number} productId Product ID.
    * @param {Number} categoryId Linked category ID.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid product ID.
-   * @throws Will throw error on missing or invalid category ID.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid product ID.
+   * @throws {Error} Missing or invalid category ID.
    */
   public getLink(productId: number, categoryId: number): Promise<ResponseInterface> {
     // Check product ID parameter.
@@ -142,9 +146,9 @@ class ProductEndpointConnector extends AbstractEndpointConnector {
    * Renames a product image.
    * @param {String} oldFilename Old file name to be renamed.
    * @param {String} newFilename New file name.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid old file name.
-   * @throws Will throw error on missing or invalid new file name.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid old file name.
+   * @throws {Error} Missing or invalid new file name.
    */
   public renameImage(oldFilename: string, newFilename: string): Promise<ResponseInterface> {
     // Check old file name parameter.
@@ -166,10 +170,10 @@ class ProductEndpointConnector extends AbstractEndpointConnector {
    * @param {Number} productId Product ID.
    * @param {Number} oldCategoryId Old category ID.
    * @param {Number} newCategoryId New category ID.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid product ID.
-   * @throws Will throw error on missing or invalid old category ID.
-   * @throws Will throw error on missing or invalid new category ID.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid product ID.
+   * @throws {Error} Missing or invalid old category ID.
+   * @throws {Error} Missing or invalid new category ID.
    */
   public updateLink(productId: number, oldCategoryId: number, newCategoryId: number): Promise<ResponseInterface> {
     // Check product ID parameter.
@@ -195,9 +199,9 @@ class ProductEndpointConnector extends AbstractEndpointConnector {
    * Uploads a product image.
    * @param {String} filePath Path to file.
    * @param {String} fileName Desired file name.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid file path parameter.
-   * @throws Will throw error on missing or invalid file name parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid file path parameter.
+   * @throws {Error} Missing or invalid file name parameter.
    */
   public uploadImage(filePath: string, fileName: string): Promise<ResponseInterface> {
     // Check file path parameter.

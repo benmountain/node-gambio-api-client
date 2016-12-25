@@ -1,6 +1,10 @@
 import { AbstractEndpointConnector, RequestDispatcher } from '.';
 import { ResponseInterface, GetOptionsInterface } from './Interfaces';
 
+/**
+ * Provides methods to perform requests to the shop's order endpoint.
+ * @extends {AbstractEndpointConnector}
+ */
 class OrderEndpointConnector extends AbstractEndpointConnector {
   /**
    * Returns the endpoint route for attributes or properties.
@@ -17,10 +21,10 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
    * @param {Number} orderItemId Order item ID.
    * @param {Object} data Order item attribute/property data.
    * @param {String} type Attribute or property?
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid order ID parameter.
-   * @throws Will throw error on missing or invalid order item ID parameter.
-   * @throws Will throw error on missing or invalid data parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid order ID parameter.
+   * @throws {Error} Missing or invalid order item ID parameter.
+   * @throws {Error} Missing or invalid data parameter.
    */
   private createAttributeOrProperty(orderId: number, orderItemId: number, data: {}, type: string): Promise<ResponseInterface> {
     // Check order ID parameter.
@@ -48,10 +52,10 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
    * @param {Number} orderItemId Order item ID.
    * @param {Number} orderItemAttributeOrPropertyId Order item attribute/property ID.
    * @param {String} type Attribute or property?
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid order ID parameter.
-   * @throws Will throw error on missing or invalid order item ID parameter.
-   * @throws Will throw error on missing or invalid order item attribute/property ID parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid order ID parameter.
+   * @throws {Error} Missing or invalid order item ID parameter.
+   * @throws {Error} Missing or invalid order item attribute/property ID parameter.
    */
   private deleteAttributeOrProperty(orderId: number, orderItemId: number, orderItemAttributeOrPropertyId: number, type: string): Promise<ResponseInterface> {
     // Check order ID parameter.
@@ -78,7 +82,7 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
    * @param {Number} orderId Order ID.
    * @param {Number} orderItemId Order item ID.
    * @param {String} type Attribute or property?
-   * @returns {Promise} Request promise.
+   * @returns {Promise}
    */
   private getAttributesOrProperties(orderId: number, orderItemId: number, type: string): Promise<ResponseInterface> {
     // Check order ID parameter.
@@ -101,10 +105,10 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
    * @param {Number} orderItemId Order item ID.
    * @param {Number} orderItemAttributeOrPropertyId Order item attribute/property ID.
    * @param {String} type Attribute or property?
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid order ID parameter.
-   * @throws Will throw error on missing or invalid order item ID parameter.
-   * @throws Will throw error on missing or invalid order item attribute/property ID parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid order ID parameter.
+   * @throws {Error} Missing or invalid order item ID parameter.
+   * @throws {Error} Missing or invalid order item attribute/property ID parameter.
    */
   private getAttributeOrProperty(orderId: number, orderItemId: number, orderItemAttributeOrPropertyId: number, type: string): Promise<ResponseInterface> {
     // Check order ID parameter.
@@ -133,10 +137,10 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
    * @param {Number} orderItemAttributeOrPropertyId Order item attribute/property ID.
    * @param {Object} data Order item attribute/property data.
    * @param {String} type Attribute or property?
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid order ID parameter.
-   * @throws Will throw error on missing or invalid order item ID parameter.
-   * @throws Will throw error on missing or invalid order item attribute/property ID parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid order ID parameter.
+   * @throws {Error} Missing or invalid order item ID parameter.
+   * @throws {Error} Missing or invalid order item attribute/property ID parameter.
    */
   private updateAttributeOrProperty(orderId: number, orderItemId: number, orderItemAttributeOrPropertyId: number, data: {}, type: string): Promise<ResponseInterface> {
     // Check order ID parameter.
@@ -171,7 +175,7 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
    * @param {Number} orderId Order ID.
    * @param {Number} orderItemId Order item ID.
    * @param {Object} data Order item attribute data.
-   * @returns {Promise} Request promise.
+   * @returns {Promise}
    */
   public createAttribute(orderId: number, orderItemId: number, data: {}): Promise<ResponseInterface> {
     return this.createAttributeOrProperty(orderId, orderItemId, data, 'attribute');
@@ -182,7 +186,7 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
    * @param {Number} orderId Order ID.
    * @param {Number} orderItemId Order item ID.
    * @param {Object} data Order item property data.
-   * @returns {Promise} Request promise.
+   * @returns {Promise}
    */
   public createProperty(orderId: number, orderItemId: number, data: {}): Promise<ResponseInterface> {
     return this.createAttributeOrProperty(orderId, orderItemId, data, 'property');
@@ -192,9 +196,9 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
    * Creates an order item.
    * @param {Number} orderId Order ID.
    * @param {Object} data Order item data.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid order ID parameter.
-   * @throws Will throw error on missing or invalid data parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid order ID parameter.
+   * @throws {Error} Missing or invalid data parameter.
    */
   public createItem(orderId: number, data: {}): Promise<ResponseInterface> {
     // Check order ID parameter.
@@ -215,9 +219,9 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
    * Creates an order total.
    * @param {Number} orderId Order ID.
    * @param {Object} data Order total data.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid order ID parameter.
-   * @throws Will throw error on missing or invalid data parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid order ID parameter.
+   * @throws {Error} Missing or invalid data parameter.
    */
   public createTotal(orderId: number, data: {}): Promise<ResponseInterface> {
     // Check order ID parameter.
@@ -239,7 +243,7 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
    * @param {Number} orderId Order ID.
    * @param {Number} orderItemId Order item ID.
    * @param {Number} orderItemAttributeId Order item attribute ID.
-   * @returns {Promise} Request promise.
+   * @returns {Promise}
    */
   public deleteAttribute(orderId: number, orderItemId: number, orderItemAttributeId: number): Promise<ResponseInterface> {
     return this.deleteAttributeOrProperty(orderId, orderItemId, orderItemAttributeId, 'attribute');
@@ -250,7 +254,7 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
    * @param {Number} orderId Order ID.
    * @param {Number} orderItemId Order item ID.
    * @param {Number} orderItemPropertyId Order item property ID.
-   * @returns {Promise} Request promise.
+   * @returns {Promise}
    */
   public deleteProperty(orderId: number, orderItemId: number, orderItemPropertyId: number): Promise<ResponseInterface> {
     return this.deleteAttributeOrProperty(orderId, orderItemId, orderItemPropertyId, 'property');
@@ -260,9 +264,9 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
    * Deletes an order item by its ID.
    * @param {Number} orderId Order ID.
    * @param {Number} orderItemId Order item ID.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid order ID parameter.
-   * @throws Will throw error on missing or invalid order item ID parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid order ID parameter.
+   * @throws {Error} Missing or invalid order item ID parameter.
    */
   public deleteItem(orderId: number, orderItemId: number): Promise<ResponseInterface> {
     // Check order ID parameter.
@@ -283,9 +287,9 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
    * Deletes an order total by its ID.
    * @param {Number} orderId Order ID.
    * @param {Number} orderTotalId Order total ID.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid order ID parameter.
-   * @throws Will throw error on missing or invalid order total ID parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid order ID parameter.
+   * @throws {Error} Missing or invalid order total ID parameter.
    */
   public deleteTotal(orderId: number, orderTotalId: number): Promise<ResponseInterface> {
     // Check order ID parameter.
@@ -305,8 +309,8 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
   /**
    * Returns an order history.
    * @param {Number} id Order ID.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid ID parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid ID parameter.
    */
   public getHistory(id: number): Promise<ResponseInterface> {
     // Check ID parameter.
@@ -322,9 +326,9 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
    * Returns an order history by its ID.
    * @param {Number} orderId Order ID.
    * @param {Number} orderHistoryId Order history ID.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid order ID parameter.
-   * @throws Will throw error on missing or invalid order history ID parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid order ID parameter.
+   * @throws {Error} Missing or invalid order history ID parameter.
    */
   public getHistoryById(orderId: number, orderHistoryId: number): Promise<ResponseInterface> {
     // Check order ID parameter.
@@ -345,7 +349,7 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
    * Returns the order item attributes.
    * @param {Number} orderId Order ID.
    * @param {Number} orderItemId Order item ID.
-   * @returns {Promise} Request promise.
+   * @returns {Promise}
    */
   public getAttributes(orderId: number, orderItemId: number): Promise<ResponseInterface> {
     return this.getAttributesOrProperties(orderId, orderItemId, 'attribute');
@@ -355,7 +359,7 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
    * Returns the order item properties.
    * @param {Number} orderId Order ID.
    * @param {Number} orderItemId Order item ID.
-   * @returns {Promise} Request promise.
+   * @returns {Promise}
    */
   public getProperties(orderId: number, orderItemId: number): Promise<ResponseInterface> {
     return this.getAttributesOrProperties(orderId, orderItemId, 'property');
@@ -366,7 +370,7 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
    * @param {Number} orderId Order ID.
    * @param {Number} orderItemId Order item ID.
    * @param {Number} orderItemAttributeId Order item attribute ID.
-   * @returns {Promise} Request promise.
+   * @returns {Promise}
    */
   public getAttribute(orderId: number, orderItemId: number, orderItemAttributeId: number): Promise<ResponseInterface> {
     return this.getAttributeOrProperty(orderId, orderItemId, orderItemAttributeId, 'attribute');
@@ -377,7 +381,7 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
    * @param {Number} orderId Order ID.
    * @param {Number} orderItemId Order item ID.
    * @param {Number} orderItemPropertyId Order item property ID.
-   * @returns {Promise} Request promise.
+   * @returns {Promise}
    */
   public getProperty(orderId: number, orderItemId: number, orderItemPropertyId: number): Promise<ResponseInterface> {
     return this.getAttributeOrProperty(orderId, orderItemId, orderItemPropertyId, 'property');
@@ -386,8 +390,8 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
   /**
    * Returns the order items.
    * @param {Number} id Order ID.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid ID parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid ID parameter.
    */
   public getItems(id: number): Promise<ResponseInterface> {
     // Check ID parameter.
@@ -403,9 +407,9 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
    * Returns an order item.
    * @param {Number} orderId Order ID.
    * @param {Number} orderItemId Order item ID.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid order ID parameter.
-   * @throws Will throw error on missing or invalid order item ID parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid order ID parameter.
+   * @throws {Error} Missing or invalid order item ID parameter.
    */
   public getItem(orderId: number, orderItemId: number): Promise<ResponseInterface> {
     // Check order ID parameter.
@@ -425,8 +429,8 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
   /**
    * Returns the order totals.
    * @param {Number} id Order ID.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid ID parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid ID parameter.
    */
   public getTotals(id: number): Promise<ResponseInterface> {
     // Check ID parameter.
@@ -442,9 +446,9 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
    * Returns an order total.
    * @param {Number} orderId Order ID.
    * @param {Number} orderTotalId Order total ID.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid order ID parameter.
-   * @throws Will throw error on missing or invalid order total ID parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid order ID parameter.
+   * @throws {Error} Missing or invalid order total ID parameter.
    */
   public getTotal(orderId: number, orderTotalId: number): Promise<ResponseInterface> {
     // Check order ID parameter.
@@ -467,7 +471,7 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
    * @param {Number} orderItemId Order item ID.
    * @param {Number} orderItemAttributeId Order item attribute ID.
    * @param {Object} data Order item attribute data.
-   * @returns {Promise} Request promise.
+   * @returns {Promise}
    */
   public updateAttribute(orderId: number, orderItemId: number, orderItemAttributeId: number, data: {}): Promise<ResponseInterface> {
     return this.updateAttributeOrProperty(orderId, orderItemId, orderItemAttributeId, data, 'attribute');
@@ -479,7 +483,7 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
    * @param {Number} orderItemId Order item ID.
    * @param {Number} orderItemPropertyId Order item property ID.
    * @param {Object} data Order item property data.
-   * @returns {Promise} Request promise.
+   * @returns {Promise}
    */
   public updateProperty(orderId: number, orderItemId: number, orderItemPropertyId: number, data: {}): Promise<ResponseInterface> {
     return this.updateAttributeOrProperty(orderId, orderItemId, orderItemPropertyId, data, 'property');
@@ -490,10 +494,10 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
    * @param {Number} orderId Order ID.
    * @param {Number} orderItemId Order item ID.
    * @param {Object} data Order item data.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid order ID parameter.
-   * @throws Will throw error on missing or invalid order item ID parameter.
-   * @throws Will throw error on missing or invalid order item data parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid order ID parameter.
+   * @throws {Error} Missing or invalid order item ID parameter.
+   * @throws {Error} Missing or invalid order item data parameter.
    */
   public updateItem(orderId: number, orderItemId: number, data: {}) {
     // Check order ID parameter.
@@ -519,9 +523,9 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
    * Updates an order status.
    * @param {Number} id Order ID.
    * @param {Object} data Order status data.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid order ID parameter.
-   * @throws Will throw error on missing or invalid order status data parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid order ID parameter.
+   * @throws {Error} Missing or invalid order status data parameter.
    */
   public updateStatus(id: number, data: {}) {
     // Check order ID parameter.
@@ -542,9 +546,9 @@ class OrderEndpointConnector extends AbstractEndpointConnector {
    * Updates an order total.
    * @param {Number} id Order ID.
    * @param {Object} data Order status data.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid order ID parameter.
-   * @throws Will throw error on missing or invalid order status data parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid order ID parameter.
+   * @throws {Error} Missing or invalid order status data parameter.
    */
   public updateTotal(orderId: number, orderTotalId: number, data: {}) {
     // Check order ID parameter.

@@ -1,3 +1,7 @@
+/**
+ * Test and example variables.
+ * @type {Object}
+ */
 const variables = {
   examples: {
     string: 'John Doe',

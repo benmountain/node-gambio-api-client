@@ -1,6 +1,10 @@
 import { AbstractEndpointConnector, RequestDispatcher } from '.';
 import { ResponseInterface, GetOptionsInterface } from './Interfaces';
 
+/**
+ * Provides methods to perform requests to the shop's category endpoint.
+ * @extends {AbstractEndpointConnector}
+ */
 class CategoryEndpointConnector extends AbstractEndpointConnector {
   /**
    * Category endpoint routes.
@@ -28,8 +32,8 @@ class CategoryEndpointConnector extends AbstractEndpointConnector {
   /**
    * Deletes a category icon by its file name.
    * @param {String} fileName File name.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid file name parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid file name parameter.
    */
   public deleteIcon(fileName: string): Promise<ResponseInterface> {
     // Check file name parameter.
@@ -44,8 +48,8 @@ class CategoryEndpointConnector extends AbstractEndpointConnector {
   /**
    * Deletes a category image by its file name.
    * @param {String} filename File name.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid file name parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid file name parameter.
    */
   public deleteImage(filename: string) {
     // Check file name parameter.
@@ -60,8 +64,8 @@ class CategoryEndpointConnector extends AbstractEndpointConnector {
   /**
    * Returns the children of a category.
    * @param {Number} id Category ID.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid ID parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid ID parameter.
    */
   public getChild(id: number): Promise<ResponseInterface> {
     // Check ID parameter.
@@ -75,7 +79,7 @@ class CategoryEndpointConnector extends AbstractEndpointConnector {
 
   /**
    * Returns all category icons.
-   * @returns {Promise} Request promise.
+   * @returns {Promise}
    */
   public getIcons(): Promise<ResponseInterface> {
     return this.requestDispatcher.get(this.routes.icons);
@@ -83,7 +87,7 @@ class CategoryEndpointConnector extends AbstractEndpointConnector {
 
   /**
    * Returns all category images.
-   * @returns {Promise} Request promise.
+   * @returns {Promise}
    */
   public getImages(): Promise<ResponseInterface> {
     return this.requestDispatcher.get(this.routes.images);
@@ -93,9 +97,9 @@ class CategoryEndpointConnector extends AbstractEndpointConnector {
    * Renames a category icon.
    * @param {String} oldFilename File to rename.
    * @param {String} newFilename New file name.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid old file name parameter.
-   * @throws Will throw error on missing or invalid new file name parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid old file name parameter.
+   * @throws {Error} Missing or invalid new file name parameter.
    */
   public renameIcon(oldFilename: string, newFilename: string): Promise<ResponseInterface> {
     // Check old file name parameter.
@@ -116,9 +120,9 @@ class CategoryEndpointConnector extends AbstractEndpointConnector {
    * Renames a category image.
    * @param {String} oldFilename File to rename.
    * @param {String} newFilename New file name.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid old file name parameter.
-   * @throws Will throw error on missing or invalid new file name parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid old file name parameter.
+   * @throws {Error} Missing or invalid new file name parameter.
    */
   public renameImage(oldFilename: string, newFilename: string): Promise<ResponseInterface> {
     // Check old file name parameter.
@@ -139,8 +143,8 @@ class CategoryEndpointConnector extends AbstractEndpointConnector {
    * Uploads a category icon.
    * @param {String} filePath File path.
    * @param {String} fileName File name.
-   * @throws Will throw error on missing or invalid file path parameter.
-   * @throws Will throw error on missing or invalid file name parameter.
+   * @throws {Error} Missing or invalid file path parameter.
+   * @throws {Error} Missing or invalid file name parameter.
    */
   public uploadIcon(filePath: string, fileName: string): Promise<ResponseInterface> {
     // Check file path parameter.
@@ -161,8 +165,8 @@ class CategoryEndpointConnector extends AbstractEndpointConnector {
    * Uploads a category image.
    * @param {String} filePath File path.
    * @param {String} fileName File name.
-   * @throws Will throw error on missing or invalid file path parameter.
-   * @throws Will throw error on missing or invalid file name parameter.
+   * @throws {Error} Missing or invalid file path parameter.
+   * @throws {Error} Missing or invalid file name parameter.
    */
   public uploadImage(filePath: string, fileName: string): Promise<ResponseInterface> {
     // Check file path parameter.

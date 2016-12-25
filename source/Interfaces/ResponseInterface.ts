@@ -1,5 +1,10 @@
 import * as http from 'http';
 
+/**
+ * Request's response.
+ * @interface ResponseInterface
+ * @extends {http.IncomingMessage}
+ */
 interface ResponseInterface extends http.IncomingMessage {
   /**
    * Response status code.

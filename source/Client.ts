@@ -11,6 +11,10 @@ import {
   ZoneEndpointConnector,
 } from '.';
 
+/**
+ * Gambio REST-API client.
+ * Entry point of the application.
+ */
 class Client {
   /**
    * Client version.
@@ -79,7 +83,11 @@ class Client {
   public zones: ZoneEndpointConnector;
 
   /**
-   * Creates an instance of Client.
+   * Creates an new client instance.
+   * @throws {Error} Missing or invalid client options object.
+   * @throws {Error} Missing or invalid shop URL.
+   * @throws {Error} Missing or invalid shop user.
+   * @throws {Error} Missing or invalid shop password.
    */
   constructor(options: ClientOptionsInterface) {
     // Check parameter.

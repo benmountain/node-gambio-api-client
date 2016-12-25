@@ -1,3 +1,7 @@
+/**
+ * Client instantiation options.
+ * @interface ClientOptionsInterface
+ */
 interface ClientOptionsInterface {
   /**
    * Shop URL.

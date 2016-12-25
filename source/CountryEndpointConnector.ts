@@ -1,6 +1,10 @@
 import { AbstractEndpointConnector, RequestDispatcher } from '.';
 import { ResponseInterface } from './Interfaces';
 
+/**
+ * Provides methods to perform requests to the shop's country endpoint.
+ * @extends {AbstractEndpointConnector}
+ */
 class CountryEndpointConnector extends AbstractEndpointConnector {
   /**
    * Returns the country endpoint route.
@@ -13,8 +17,8 @@ class CountryEndpointConnector extends AbstractEndpointConnector {
   /**
    * Returns the zones for a country.
    * @param {Number} id Country ID.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid ID parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid ID parameter.
    */
   public getZonesByCountryId(id: number): Promise<ResponseInterface> {
     // Check ID parameter.

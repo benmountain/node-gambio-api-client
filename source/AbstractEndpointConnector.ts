@@ -1,6 +1,11 @@
 import { RequestDispatcher } from '.';
 import { GetOptionsInterface, ResponseInterface } from './Interfaces';
 
+/**
+ * All endpoint connectors have to extend this class.
+ * This class already implements repeating methods like for example `get()` and `create()`.
+ * @abstract
+ */
 abstract class AbstractEndpointConnector {
   /**
    * Request dispatcher.
@@ -11,7 +16,7 @@ abstract class AbstractEndpointConnector {
   /**
    * Creates an instance of AbstractEndpointConnector.
    * @param {RequestDispatcher} requestDispatcher Request dispatcher instance.
-   * @throws Will throw an error if the parameter is missing or if it is not a request dispatcher.
+   * @throws {Error} Parameter is missing or if it is not a request dispatcher.
    */
   constructor(requestDispatcher: RequestDispatcher) {
     // Check request dispatcher parameter.
@@ -63,8 +68,8 @@ abstract class AbstractEndpointConnector {
   /**
    * Creates a new entries of the endpoint resource.
    * @param {Object} data Entry data.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid data parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid data parameter.
    */
   public create(data: {}): Promise<ResponseInterface> {
     // Check data parameter.
@@ -79,7 +84,7 @@ abstract class AbstractEndpointConnector {
   /**
    * Returns all entries of the endpoint resource.
    * @param {GetOptionsInterface} [options] GET request modifier options.
-   * @returns {Promise} Request promise.
+   * @returns {Promise}
    */
   public get(options?: GetOptionsInterface): Promise<ResponseInterface> {
     return this.requestDispatcher.get(this.getRoute(), this.parseGetOptions(options));
@@ -88,8 +93,8 @@ abstract class AbstractEndpointConnector {
   /**
    * Returns an entry of the endpoint resource.
    * @param {Number} id Entry ID.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid ID parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid ID parameter.
    */
   public getById(id: number): Promise<ResponseInterface> {
     // Check ID parameter.
@@ -104,8 +109,8 @@ abstract class AbstractEndpointConnector {
   /**
    * Deletes an entry by its ID of the endpoint resource.
    * @param {Number} id Entry ID.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid ID parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid ID parameter.
    */
   public delete(id: number): Promise<ResponseInterface> {
     // Check ID parameter.
@@ -120,8 +125,8 @@ abstract class AbstractEndpointConnector {
   /**
    * Searches the endpoint resource with the passed term.
    * @param {String} term Search term.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid search term parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid search term parameter.
    */
   public search(term: string): Promise<ResponseInterface> {
     // Check search term parameter.
@@ -137,9 +142,9 @@ abstract class AbstractEndpointConnector {
    * Updates an entry of the endpoint resource.
    * @param {number} id Entry ID.
    * @param {Object} data Entry data.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid ID parameter.
-   * @throws Will throw error on missing or invalid data parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid ID parameter.
+   * @throws {Error} Missing or invalid data parameter.
    */
   public update(id: number, data: {}): Promise<ResponseInterface> {
     // Check ID parameter.

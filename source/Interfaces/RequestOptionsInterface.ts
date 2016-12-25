@@ -1,5 +1,9 @@
 import { RequestAuthOptionsInterface } from '.';
 
+/**
+ * Request options.
+ * @interface RequestOptionsInterface
+ */
 interface RequestOptionsInterface {
   /**
    * Request headers.
@@ -8,7 +12,7 @@ interface RequestOptionsInterface {
   headers: {};
 
   /**
-   * Request authentication.
+   * Request authentication options.
    * @type {RequestAuthOptionsInterface}
    */
   auth: RequestAuthOptionsInterface;

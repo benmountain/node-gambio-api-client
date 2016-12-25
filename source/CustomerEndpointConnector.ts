@@ -1,6 +1,10 @@
 import { AbstractEndpointConnector, RequestDispatcher } from '.';
 import { ResponseInterface, GetOptionsInterface } from './Interfaces';
 
+/**
+ * Provides methods to perform requests to the shop's customer endpoint.
+ * @extends {AbstractEndpointConnector}
+ */
 class CustomerEndpointConnector extends AbstractEndpointConnector {
   /**
    * Returns the customer endpoint route.
@@ -13,7 +17,7 @@ class CustomerEndpointConnector extends AbstractEndpointConnector {
   /**
    * Returns all customers, that are guests.
    * @param {GetOptionsInterface} [options] GET request modifier options.
-   * @returns {Promise} Request promise.
+   * @returns {Promise}
    */
   public getGuests(options?: GetOptionsInterface): Promise<ResponseInterface> {
     return this.requestDispatcher.get(this.getRoute(), Object.assign({}, this.parseGetOptions(options), { type: 'guests' }));
@@ -22,8 +26,8 @@ class CustomerEndpointConnector extends AbstractEndpointConnector {
   /**
    * Returns the addresses of a customer.
    * @param {Number} id Customer ID.
-   * @returns {Promise} Request promise.
-   * @throws Will throw error on missing or invalid ID parameter.
+   * @returns {Promise}
+   * @throws {Error} Missing or invalid ID parameter.
    */
   public getAddresses(id: number): Promise<ResponseInterface> {
     // Check ID parameter.
