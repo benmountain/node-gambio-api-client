@@ -9,6 +9,8 @@ import orderItem from './orderItem.json';
 import orderItemAttribute from './orderItemAttribute.json';
 import orderTotal from './orderTotal.json';
 import login from './login.json';
+import product from './product.json';
+import productLink from './productLink.json';
 
 const file = path.resolve(path.join(__dirname, 'file.txt'));
 const image = path.resolve(path.join(__dirname, 'image.png'));
@@ -25,4 +27,6 @@ export {
   file,
   image,
   login,
+  product,
+  productLink,
 };
