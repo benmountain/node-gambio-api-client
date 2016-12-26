@@ -1,5 +1,9 @@
 # API
 
+This document describes the available methods.
+
+
+
 ## Table of contents
 
 - [Introduction](#introduction)
@@ -95,6 +99,8 @@
   - [Upload product image](#upload-product-image)
 - [Zones](#zones)
   - [Get specific zone](#get-specific-zone)
+
+
 
 
 
