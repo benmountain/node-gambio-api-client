@@ -15,6 +15,7 @@ test('OrderEndpointConnector#create', t => reusableTesters.testEndpointConnector
 test('OrderEndpointConnector#deleteAttribute', t => reusableTesters.testEndpointConnectorCustomMethodWithMultipleParameters(t, instance, 'deleteAttribute', [variables.examples.number, variables.examples.number, variables.examples.number]));
 test('OrderEndpointConnector#deleteProperty', t => reusableTesters.testEndpointConnectorCustomMethodWithMultipleParameters(t, instance, 'deleteProperty', [variables.examples.number, variables.examples.number, variables.examples.number]));
 test('OrderEndpointConnector#deleteTotal', t => reusableTesters.testEndpointConnectorCustomMethodWithMultipleParameters(t, instance, 'deleteTotal', [variables.examples.number, variables.examples.number]));
+test('OrderEndpointConnector#deleteItem', t => reusableTesters.testEndpointConnectorCustomMethodWithMultipleParameters(t, instance, 'deleteItem', [variables.examples.number, variables.examples.number]));
 test('OrderEndpointConnector#delete', t => reusableTesters.testEndpointConnectorDeleteMethod(t, instance));
 test('OrderEndpointConnector#getHistory', t => reusableTesters.testEndpointConnectorCustomMethodWithRequiredParameter(t, instance, 'getHistory', variables.examples.number));
 test('OrderEndpointConnector#getHistoryById', t => reusableTesters.testEndpointConnectorCustomMethodWithMultipleParameters(t, instance, 'getHistoryById', [variables.examples.number, variables.examples.number]));
