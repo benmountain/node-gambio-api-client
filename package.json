@@ -1,5 +1,5 @@
 {
-  "name": "node-api-client",
+  "name": "gambio-api-client",
   "version": "0.1.0",
   "description": "Node API client for Gambio",
   "main": "index.js",
@@ -24,7 +24,7 @@
     "js"
   ],
   "author": "Gambio GmbH",
-  "license": "MIT",
+  "license": "GPLv2",
   "bugs": {
     "url": "https://github.com/gambio/node-api-client/issues"
   },
