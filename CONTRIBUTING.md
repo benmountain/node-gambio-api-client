@@ -2,22 +2,22 @@
 
 ## Table of contents
 
-  - [Introduction](#introduction)
-  - [Technologies](#technologies)
+- [Introduction](#introduction)
+- [Technologies](#technologies)
     - [Source code](#source-code)
     - [Tests](#tests)
       - [Unit tests](#unit-tests)
       - [E2E tests](#e2e-tests)
-  - [Dependencies](#dependencies)
+- [Dependencies](#dependencies)
     - [Development dependencies](#development-dependencies)
     - [Production dependencies](#production-dependencies)
-  - [Files](#files)
+- [Files](#files)
     - [Directory structure](#directory-structure)
     - [Project files details](#project-files-details)
-  - [Available commands](#available-commands)
+- [Available commands](#available-commands)
     - [Development](#development)
     - [Testing](#testing)
-  - [Rules](#rules)
+- [Rules](#rules)
 
 
 ## Introduction
@@ -120,5 +120,6 @@ Everyone is welcome to send pull requests.
 - Lint your code
 - Follow semantic versioning scheme
 - Make entries to the changelog file
-- Document you code using JSDoc documentation blocks
+- Document your code using JSDoc documentation blocks
 - Describe your method in API documentation file
+- Format your code according to the style guidelines in `.editorconfig`
