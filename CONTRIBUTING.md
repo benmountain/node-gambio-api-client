@@ -91,6 +91,7 @@ Everyone is welcome to send pull requests.
 - `.babelrc` - Babel compiler settings
 - `.editorconfig` - Universal editor configuration
 - `.gitignore` - List of ignored files and directories
+- `.travis.yml` - Travis CI configuration file
 - `CHANGELOG.md` - Changelog
 - `CONTRIBUTING.md` - This file
 - `gulpfile.babel.js` - Gulp tasks definition file
