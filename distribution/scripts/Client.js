@@ -49,5 +49,5 @@ var Client = (function () {
  * Client version.
  * @type {String}
  */
-Client.VERSION = '0.1.0';
+Client.VERSION = '0.1.1';
 exports.Client = Client;
