@@ -1,6 +1,6 @@
 {
   "name": "gambio-api-client",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Node client for the Gambio REST API",
   "main": "index.js",
   "scripts": {
