@@ -1,6 +1,6 @@
 # Node client for the Gambio REST API [![Build Status](https://travis-ci.org/gambio/node-gambio-api-client.svg?branch=master)](https://travis-ci.org/gambio/node-gambio-api-client) [![npm version](https://badge.fury.io/js/gambio-api-client.svg)](https://badge.fury.io/js/gambio-api-client)
 
-Performs requests to the integrated RESTful API of the [Gambio shop system](http://www.gambio.com).
+Performs requests to the integrated **REST**ful API of the [**Gambio** shop system](http://www.gambio.com).
 
 
 
@@ -39,7 +39,7 @@ npm install gambio-api-client
 
 **Creating an instance**
 
-To create a client instance you need to pass in the shop URL, administrator user and password credentials.
+To create a client instance you need to pass in the **shop URL**, **administrator user** and **password** credentials.
 
 ```js
 import Client from 'gambio-api-client';
@@ -55,7 +55,7 @@ const instance = new Client({
 
 **Returning the client version**
 
-To get the client version just access the static class property `VERSION` .
+To get the **client version** just access the static class property `VERSION` .
 
 ```js
 const version = Client.VERSION;
@@ -114,7 +114,7 @@ To see all available API methods please refer to the [**API documentation**](API
 
 **Getting started**
 
-To get started you may read the [contribution document](CONTRIBUTING.md).
+To get started you may read the [**contribution document**](CONTRIBUTING.md).
 
 Pull requests are always welcome.
 
@@ -122,10 +122,10 @@ Pull requests are always welcome.
 
 **Security vulnerabilities**
 
-If you encounter any security vulnerabilities, please contact [@rx2x](https://github.com/rx2x) (creator of this project) in place of creating an issue.
+If you encounter any security vulnerabilities, please contact [@rx2x](https://github.com/rx2x) *(project creator)* in place of creating an issue.
 
 
 
 ## License
 
-[MIT](LICENSE)
+[**MIT**](LICENSE)

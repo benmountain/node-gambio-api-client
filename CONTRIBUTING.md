@@ -2,7 +2,6 @@
 
 ## Table of contents
 
-- [Introduction](#introduction)
 - [Technologies](#technologies)
     - [Source code](#source-code)
     - [Tests](#tests)
@@ -18,13 +17,6 @@
     - [Development](#development)
     - [Testing](#testing)
 - [Rules](#rules)
-
-
-## Introduction
-
-This document helps you to get involved into the development of this project.
-
-Everyone is welcome to send pull requests.
 
 ## Technologies
 
@@ -117,10 +109,10 @@ Everyone is welcome to send pull requests.
 
 ## Rules
 
-- Perform test-driven development
-- Lint your code
-- Follow semantic versioning scheme
-- Make entries to the changelog file
-- Document your code using JSDoc documentation blocks
-- Describe your method in API documentation file
-- Format your code according to the style guidelines in `.editorconfig`
+- Perform test-driven development (write [unit](https://github.com/substack/tape) and E2E tests)
+- Lint your code (using [TSLint](https://palantir.github.io/tslint))
+- Follow [semantic versioning scheme](http://semver.org)
+- Make entries to the [changelog](CHANGELOG.md) file
+- Document your code using [JSDoc](http://usejsdoc.org) documentation blocks
+- Format your code according to the [style guidelines](.editorconfig)
+- Describe your method in [API documentation](API.md) file
