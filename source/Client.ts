@@ -20,7 +20,7 @@ class Client {
    * Client version.
    * @type {String}
    */
-  public static VERSION: string = '0.1.0';
+  public static VERSION: string = '0.1.1';
 
   /**
    * Client options.
