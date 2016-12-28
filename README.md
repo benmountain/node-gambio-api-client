@@ -95,7 +95,7 @@ function deleteAllAddressesOfCustomer(addresses) {
 }
 
 instance.customers.search('Doe')
-	.then(result => findJohnDoe)
+	.then(result => result.find(findJohnDoe))
 	.then(customer => instance.customers.getAddresses(customer.id))
 	.then(deleteAllAddressesOfCustomer)
 	.then(() => console.log('Successfully deleted addresses'))
