@@ -1,4 +1,4 @@
-# Node client for the Gambio REST API [![Build Status](https://travis-ci.org/gambio/node-gambio-api-client.svg?branch=master)](https://travis-ci.org/gambio/node-gambio-api-client)
+# Node client for the Gambio REST API [![Build Status](https://travis-ci.org/gambio/node-gambio-api-client.svg?branch=master)](https://travis-ci.org/gambio/node-gambio-api-client) [![npm version](https://badge.fury.io/js/gambio-api-client.svg)](https://badge.fury.io/js/gambio-api-client)
 
 Performs requests to the integrated RESTful API of the [Gambio shop system](http://www.gambio.com).
 
