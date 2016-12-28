@@ -1,6 +1,6 @@
-# Node API client for Gambio
+# Node client for the Gambio REST API
 
-Performs requests to the integrated REST-API of the [Gambio shop system](http://www.gambio.com).
+Performs requests to the integrated RESTful API of the [Gambio shop system](http://www.gambio.com).
 
 
 
@@ -8,7 +8,7 @@ Performs requests to the integrated REST-API of the [Gambio shop system](http://
 
 - Easy-to-read API
 - Usage of Promises for chainable operations
-- Fully tested (Unit-tests and E2E-tests)
+- Fully tested (Unit and E2E tests)
 
 
 
@@ -81,7 +81,7 @@ instance.customers.get()
 
 
 
-**More complex example: Delete all addresses of customer 'John Doe'**
+**More complex example: Deleting all addresses of customer 'John Doe'**
 
 ```js
 function findJohnDoe(customer) {
@@ -114,7 +114,7 @@ To see all available API methods please refer to the [**API documentation**](API
 
 **Getting started**
 
-To get started you should read the [contribution document](CONTRIBUTING.md).
+To get started you may read the [contribution document](CONTRIBUTING.md).
 
 Pull requests are always welcome.
 
@@ -122,10 +122,10 @@ Pull requests are always welcome.
 
 **Security vulnerabilities**
 
-If you encounter security vulnerabilities, you should contact [@rx2x](https://github.com/rx2x) (creator of this project) in place of creating an issue.
+If you encounter any security vulnerabilities, please contact [@rx2x](https://github.com/rx2x) (creator of this project) in place of creating an issue.
 
 
 
 ## License
 
-[GPL Version 2](LICENSE)
+[MIT](LICENSE)
